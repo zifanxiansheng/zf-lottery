@@ -1,8 +1,10 @@
-package top.zifanxiansheng.zf_lottery.domain.activity.service.algorithm.impl;
+package top.zifanxiansheng.zf_lottery.domain.strategy.service.algorithm.impl;
 
 import org.springframework.stereotype.Component;
-import top.zifanxiansheng.zf_lottery.domain.activity.model.bo.AwardRateInfo;
-import top.zifanxiansheng.zf_lottery.domain.activity.service.algorithm.BaseLotteryAlgorithm;
+import top.zifanxiansheng.zf_lottery.common.Constants;
+import top.zifanxiansheng.zf_lottery.domain.strategy.annotation.StrategyModel;
+import top.zifanxiansheng.zf_lottery.domain.strategy.model.bo.AwardRateInfo;
+import top.zifanxiansheng.zf_lottery.domain.strategy.service.algorithm.BaseLotteryAlgorithm;
 
 import java.math.BigDecimal;
 import java.security.SecureRandom;
@@ -14,7 +16,8 @@ import java.util.stream.Collectors;
  * @Date 2021/12/24 17:01
  **/
 @Component
-public class FullRateRandomCalcAlgorithm extends BaseLotteryAlgorithm {
+@StrategyModel(strategyModel = Constants.StrategyModelEnum.OVERALL)
+public class OverAllRateRandomCalcAlgorithm extends BaseLotteryAlgorithm {
 
 
     @Override
@@ -22,17 +25,12 @@ public class FullRateRandomCalcAlgorithm extends BaseLotteryAlgorithm {
 
         List<AwardRateInfo> awardRateList = getAwardRateList(strategyId);
 
-
         List<AwardRateInfo> availableAwardRateList = awardRateList.stream().filter(ar -> !excludeAwardIds.contains(ar.getAwardId())).collect(Collectors.toList());
         BigDecimal currentAwardRateDenominator = availableAwardRateList.stream()
                 .reduce(BigDecimal.ZERO, (rateDenominator, a2) -> rateDenominator.add(a2.getAwardRate()), BigDecimal::add);
 
-        if (availableAwardRateList.size() == 0) {
-            return null;
-        }
-        if (availableAwardRateList.size() == 1) {
-            return availableAwardRateList.get(0).getAwardId();
-        }
+        if (availableAwardRateList.size() == 0) return null;
+        if (availableAwardRateList.size() == 1) return availableAwardRateList.get(0).getAwardId();
 
         SecureRandom secureRandom = new SecureRandom();
         int randomVal = secureRandom.nextInt(100) + 1;

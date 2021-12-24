@@ -1,6 +1,6 @@
-package top.zifanxiansheng.zf_lottery.domain.activity.repository;
+package top.zifanxiansheng.zf_lottery.domain.strategy.repository;
 
-import top.zifanxiansheng.zf_lottery.domain.activity.model.bo.AwardRateInfo;
+import top.zifanxiansheng.zf_lottery.domain.strategy.model.bo.AwardRateInfo;
 
 import java.util.List;
 

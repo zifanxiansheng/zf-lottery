@@ -1,4 +1,4 @@
-package top.zifanxiansheng.zf_lottery.domain.activity.model.bo;
+package top.zifanxiansheng.zf_lottery.domain.strategy.model.bo;
 
 import lombok.Builder;
 import lombok.Data;

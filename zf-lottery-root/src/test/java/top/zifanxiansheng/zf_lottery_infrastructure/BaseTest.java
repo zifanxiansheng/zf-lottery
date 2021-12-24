@@ -12,5 +12,6 @@ import top.zifanxiansheng.zf_lottery.LotteryApplication;
 
 @RunWith(SpringRunner.class)
 @SpringBootTest(classes = {LotteryApplication.class})
+
 public class BaseTest {
 }

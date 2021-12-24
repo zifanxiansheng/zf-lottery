@@ -1,13 +1,12 @@
-package top.zifanxiansheng.zf_lottery.domain.activity.repository.impl;
+package top.zifanxiansheng.zf_lottery.domain.strategy.repository.impl;
 
 import org.springframework.stereotype.Repository;
-import top.zifanxiansheng.zf_lottery.domain.activity.model.bo.AwardRateInfo;
-import top.zifanxiansheng.zf_lottery.domain.activity.repository.IStrategyRepository;
+import top.zifanxiansheng.zf_lottery.domain.strategy.model.bo.AwardRateInfo;
+import top.zifanxiansheng.zf_lottery.domain.strategy.repository.IStrategyRepository;
 import top.zifanxiansheng.zf_lottery.infrastructure.dao.StrategyDetailDAO;
 import top.zifanxiansheng.zf_lottery.infrastructure.po.StrategyDetail;
 
 import javax.annotation.Resource;
-import java.util.ArrayList;
 import java.util.List;
 import java.util.stream.Collectors;
 

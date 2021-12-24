@@ -1,169 +1,216 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="top.zifanxiansheng.zf_lottery.infrastructure.dao.UserTakeActivityDAO">
-  <resultMap id="BaseResultMap" type="top.zifanxiansheng.zf_lottery.infrastructure.po.UserTakeActivity">
-    <id column="id" jdbcType="BIGINT" property="id" />
-    <result column="u_id" jdbcType="VARCHAR" property="uId" />
-    <result column="take_id" jdbcType="BIGINT" property="takeId" />
-    <result column="activity_id" jdbcType="BIGINT" property="activityId" />
-    <result column="activity_name" jdbcType="VARCHAR" property="activityName" />
-    <result column="take_date" jdbcType="TIMESTAMP" property="takeDate" />
-    <result column="take_count" jdbcType="INTEGER" property="takeCount" />
-    <result column="strategy_id" jdbcType="INTEGER" property="strategyId" />
-    <result column="state" jdbcType="TINYINT" property="state" />
-    <result column="uuid" jdbcType="VARCHAR" property="uuid" />
-    <result column="create_time" jdbcType="TIMESTAMP" property="createTime" />
-    <result column="update_time" jdbcType="TIMESTAMP" property="updateTime" />
-  </resultMap>
-  <sql id="Base_Column_List">
-    'id', u_id, take_id, activity_id, activity_name, take_date, take_count, strategy_id,
-    `state`, uuid, create_time, update_time
-  </sql>
-  <select id="selectByPrimaryKey" parameterType="java.lang.Long" resultMap="BaseResultMap">
-    select 
-    <include refid="Base_Column_List" />
-    from user_take_activity
-    where id = #{id,jdbcType=BIGINT}
-  </select>
-  <delete id="deleteByPrimaryKey" parameterType="java.lang.Long">
-    delete from user_take_activity
-    where id = #{id,jdbcType=BIGINT}
-  </delete>
-  <insert id="insert" keyColumn="id" keyProperty="id" parameterType="top.zifanxiansheng.zf_lottery.infrastructure.po.UserTakeActivity" useGeneratedKeys="true">
-    insert into user_take_activity (u_id, take_id, activity_id, 
-      activity_name, take_date, take_count, 
-      strategy_id, `state`, uuid, 
-      create_time, update_time)
-    values (#{uId,jdbcType=VARCHAR}, #{takeId,jdbcType=BIGINT}, #{activityId,jdbcType=BIGINT}, 
-      #{activityName,jdbcType=VARCHAR}, #{takeDate,jdbcType=TIMESTAMP}, #{takeCount,jdbcType=INTEGER}, 
-      #{strategyId,jdbcType=INTEGER}, #{state,jdbcType=TINYINT}, #{uuid,jdbcType=VARCHAR}, 
-      #{createTime,jdbcType=TIMESTAMP}, #{updateTime,jdbcType=TIMESTAMP})
-  </insert>
-  <insert id="insertSelective" keyColumn="id" keyProperty="id" parameterType="top.zifanxiansheng.zf_lottery.infrastructure.po.UserTakeActivity" useGeneratedKeys="true">
-    insert into user_take_activity
-    <trim prefix="(" suffix=")" suffixOverrides=",">
-      <if test="uId != null">
-        u_id,
-      </if>
-      <if test="takeId != null">
-        take_id,
-      </if>
-      <if test="activityId != null">
-        activity_id,
-      </if>
-      <if test="activityName != null">
-        activity_name,
-      </if>
-      <if test="takeDate != null">
-        take_date,
-      </if>
-      <if test="takeCount != null">
-        take_count,
-      </if>
-      <if test="strategyId != null">
-        strategy_id,
-      </if>
-      <if test="state != null">
-        `state`,
-      </if>
-      <if test="uuid != null">
-        uuid,
-      </if>
-      <if test="createTime != null">
-        create_time,
-      </if>
-      <if test="updateTime != null">
-        update_time,
-      </if>
-    </trim>
-    <trim prefix="values (" suffix=")" suffixOverrides=",">
-      <if test="uId != null">
-        #{uId,jdbcType=VARCHAR},
-      </if>
-      <if test="takeId != null">
-        #{takeId,jdbcType=BIGINT},
-      </if>
-      <if test="activityId != null">
-        #{activityId,jdbcType=BIGINT},
-      </if>
-      <if test="activityName != null">
-        #{activityName,jdbcType=VARCHAR},
-      </if>
-      <if test="takeDate != null">
-        #{takeDate,jdbcType=TIMESTAMP},
-      </if>
-      <if test="takeCount != null">
-        #{takeCount,jdbcType=INTEGER},
-      </if>
-      <if test="strategyId != null">
-        #{strategyId,jdbcType=INTEGER},
-      </if>
-      <if test="state != null">
-        #{state,jdbcType=TINYINT},
-      </if>
-      <if test="uuid != null">
-        #{uuid,jdbcType=VARCHAR},
-      </if>
-      <if test="createTime != null">
-        #{createTime,jdbcType=TIMESTAMP},
-      </if>
-      <if test="updateTime != null">
-        #{updateTime,jdbcType=TIMESTAMP},
-      </if>
-    </trim>
-  </insert>
-  <update id="updateByPrimaryKeySelective" parameterType="top.zifanxiansheng.zf_lottery.infrastructure.po.UserTakeActivity">
-    update user_take_activity
-    <set>
-      <if test="uId != null">
-        u_id = #{uId,jdbcType=VARCHAR},
-      </if>
-      <if test="takeId != null">
-        take_id = #{takeId,jdbcType=BIGINT},
-      </if>
-      <if test="activityId != null">
-        activity_id = #{activityId,jdbcType=BIGINT},
-      </if>
-      <if test="activityName != null">
-        activity_name = #{activityName,jdbcType=VARCHAR},
-      </if>
-      <if test="takeDate != null">
-        take_date = #{takeDate,jdbcType=TIMESTAMP},
-      </if>
-      <if test="takeCount != null">
-        take_count = #{takeCount,jdbcType=INTEGER},
-      </if>
-      <if test="strategyId != null">
-        strategy_id = #{strategyId,jdbcType=INTEGER},
-      </if>
-      <if test="state != null">
-        `state` = #{state,jdbcType=TINYINT},
-      </if>
-      <if test="uuid != null">
-        uuid = #{uuid,jdbcType=VARCHAR},
-      </if>
-      <if test="createTime != null">
-        create_time = #{createTime,jdbcType=TIMESTAMP},
-      </if>
-      <if test="updateTime != null">
-        update_time = #{updateTime,jdbcType=TIMESTAMP},
-      </if>
-    </set>
-    where id = #{id,jdbcType=BIGINT}
-  </update>
-  <update id="updateByPrimaryKey" parameterType="top.zifanxiansheng.zf_lottery.infrastructure.po.UserTakeActivity">
-    update user_take_activity
-    set u_id = #{uId,jdbcType=VARCHAR},
-      take_id = #{takeId,jdbcType=BIGINT},
-      activity_id = #{activityId,jdbcType=BIGINT},
-      activity_name = #{activityName,jdbcType=VARCHAR},
-      take_date = #{takeDate,jdbcType=TIMESTAMP},
-      take_count = #{takeCount,jdbcType=INTEGER},
-      strategy_id = #{strategyId,jdbcType=INTEGER},
-      `state` = #{state,jdbcType=TINYINT},
-      uuid = #{uuid,jdbcType=VARCHAR},
-      create_time = #{createTime,jdbcType=TIMESTAMP},
-      update_time = #{updateTime,jdbcType=TIMESTAMP}
-    where id = #{id,jdbcType=BIGINT}
-  </update>
+    <resultMap id="BaseResultMap" type="top.zifanxiansheng.zf_lottery.infrastructure.po.UserTakeActivity">
+        <id column="id" jdbcType="BIGINT" property="id"/>
+        <result column="u_id" jdbcType="VARCHAR" property="uId"/>
+        <result column="take_id" jdbcType="BIGINT" property="takeId"/>
+        <result column="activity_id" jdbcType="BIGINT" property="activityId"/>
+        <result column="activity_name" jdbcType="VARCHAR" property="activityName"/>
+        <result column="take_date" jdbcType="TIMESTAMP" property="takeDate"/>
+        <result column="take_count" jdbcType="INTEGER" property="takeCount"/>
+        <result column="strategy_id" jdbcType="INTEGER" property="strategyId"/>
+        <result column="state" jdbcType="TINYINT" property="state"/>
+        <result column="uuid" jdbcType="VARCHAR" property="uuid"/>
+        <result column="create_time" jdbcType="TIMESTAMP" property="createTime"/>
+        <result column="update_time" jdbcType="TIMESTAMP" property="updateTime"/>
+    </resultMap>
+    <sql id="Base_Column_List">
+        'id', u_id, take_id, activity_id, activity_name, take_date, take_count, strategy_id,
+        `state`, uuid, create_time, update_time
+    </sql>
+    <select id="selectByPrimaryKey" parameterType="java.lang.Long" resultMap="BaseResultMap">
+        select
+        <include refid="Base_Column_List"/>
+        from user_take_activity
+        where id = #{id,jdbcType=BIGINT}
+    </select>
+    <delete id="deleteByPrimaryKey" parameterType="java.lang.Long">
+        delete
+        from user_take_activity
+        where id = #{id,jdbcType=BIGINT}
+    </delete>
+    <insert id="insert" keyColumn="id" keyProperty="id"
+            parameterType="top.zifanxiansheng.zf_lottery.infrastructure.po.UserTakeActivity" useGeneratedKeys="true">
+        insert into user_take_activity (u_id, take_id, activity_id,
+                                        activity_name, take_date, take_count,
+                                        strategy_id, `state`, uuid,
+                                        create_time, update_time)
+        values (#{uId,jdbcType=VARCHAR}, #{takeId,jdbcType=BIGINT}, #{activityId,jdbcType=BIGINT},
+                #{activityName,jdbcType=VARCHAR}, #{takeDate,jdbcType=TIMESTAMP}, #{takeCount,jdbcType=INTEGER},
+                #{strategyId,jdbcType=INTEGER}, #{state,jdbcType=TINYINT}, #{uuid,jdbcType=VARCHAR},
+                #{createTime,jdbcType=TIMESTAMP}, #{updateTime,jdbcType=TIMESTAMP})
+    </insert>
+    <insert id="insertSelective" keyColumn="id" keyProperty="id"
+            parameterType="top.zifanxiansheng.zf_lottery.infrastructure.po.UserTakeActivity" useGeneratedKeys="true">
+        insert into user_take_activity
+        <trim prefix="(" suffix=")" suffixOverrides=",">
+            <if test="uId != null">
+                u_id,
+            </if>
+            <if test="takeId != null">
+                take_id,
+            </if>
+            <if test="activityId != null">
+                activity_id,
+            </if>
+            <if test="activityName != null">
+                activity_name,
+            </if>
+            <if test="takeDate != null">
+                take_date,
+            </if>
+            <if test="takeCount != null">
+                take_count,
+            </if>
+            <if test="strategyId != null">
+                strategy_id,
+            </if>
+            <if test="state != null">
+                `state`,
+            </if>
+            <if test="uuid != null">
+                uuid,
+            </if>
+            <if test="createTime != null">
+                create_time,
+            </if>
+            <if test="updateTime != null">
+                update_time,
+            </if>
+        </trim>
+        <trim prefix="values (" suffix=")" suffixOverrides=",">
+            <if test="uId != null">
+                #{uId,jdbcType=VARCHAR},
+            </if>
+            <if test="takeId != null">
+                #{takeId,jdbcType=BIGINT},
+            </if>
+            <if test="activityId != null">
+                #{activityId,jdbcType=BIGINT},
+            </if>
+            <if test="activityName != null">
+                #{activityName,jdbcType=VARCHAR},
+            </if>
+            <if test="takeDate != null">
+                #{takeDate,jdbcType=TIMESTAMP},
+            </if>
+            <if test="takeCount != null">
+                #{takeCount,jdbcType=INTEGER},
+            </if>
+            <if test="strategyId != null">
+                #{strategyId,jdbcType=INTEGER},
+            </if>
+            <if test="state != null">
+                #{state,jdbcType=TINYINT},
+            </if>
+            <if test="uuid != null">
+                #{uuid,jdbcType=VARCHAR},
+            </if>
+            <if test="createTime != null">
+                #{createTime,jdbcType=TIMESTAMP},
+            </if>
+            <if test="updateTime != null">
+                #{updateTime,jdbcType=TIMESTAMP},
+            </if>
+        </trim>
+    </insert>
+
+    <select id="selectByKeySelective" parameterType="top.zifanxiansheng.zf_lottery.infrastructure.po.UserTakeActivity">
+        select
+        <include refid="Base_Column_List"/>
+        from user_take_activity
+        <where>
+            <set>
+                <if test="uId != null">
+                    u_id = #{uId,jdbcType=VARCHAR},
+                </if>
+                <if test="takeId != null">
+                    take_id = #{takeId,jdbcType=BIGINT},
+                </if>
+                <if test="activityId != null">
+                    activity_id = #{activityId,jdbcType=BIGINT},
+                </if>
+                <if test="activityName != null">
+                    activity_name = #{activityName,jdbcType=VARCHAR},
+                </if>
+                <if test="takeDate != null">
+                    take_date = #{takeDate,jdbcType=TIMESTAMP},
+                </if>
+                <if test="takeCount != null">
+                    take_count = #{takeCount,jdbcType=INTEGER},
+                </if>
+                <if test="strategyId != null">
+                    strategy_id = #{strategyId,jdbcType=INTEGER},
+                </if>
+                <if test="state != null">
+                    `state` = #{state,jdbcType=TINYINT},
+                </if>
+                <if test="uuid != null">
+                    uuid = #{uuid,jdbcType=VARCHAR},
+                </if>
+                <if test="createTime != null">
+                    create_time = #{createTime,jdbcType=TIMESTAMP},
+                </if>
+                <if test="updateTime != null">
+                    update_time = #{updateTime,jdbcType=TIMESTAMP},
+                </if>
+            </set>
+        </where>
+    </select>
+    <update id="updateByPrimaryKeySelective"
+            parameterType="top.zifanxiansheng.zf_lottery.infrastructure.po.UserTakeActivity">
+        update user_take_activity
+        <set>
+            <if test="uId != null">
+                u_id = #{uId,jdbcType=VARCHAR},
+            </if>
+            <if test="takeId != null">
+                take_id = #{takeId,jdbcType=BIGINT},
+            </if>
+            <if test="activityId != null">
+                activity_id = #{activityId,jdbcType=BIGINT},
+            </if>
+            <if test="activityName != null">
+                activity_name = #{activityName,jdbcType=VARCHAR},
+            </if>
+            <if test="takeDate != null">
+                take_date = #{takeDate,jdbcType=TIMESTAMP},
+            </if>
+            <if test="takeCount != null">
+                take_count = #{takeCount,jdbcType=INTEGER},
+            </if>
+            <if test="strategyId != null">
+                strategy_id = #{strategyId,jdbcType=INTEGER},
+            </if>
+            <if test="state != null">
+                `state` = #{state,jdbcType=TINYINT},
+            </if>
+            <if test="uuid != null">
+                uuid = #{uuid,jdbcType=VARCHAR},
+            </if>
+            <if test="createTime != null">
+                create_time = #{createTime,jdbcType=TIMESTAMP},
+            </if>
+            <if test="updateTime != null">
+                update_time = #{updateTime,jdbcType=TIMESTAMP},
+            </if>
+        </set>
+        where id = #{id,jdbcType=BIGINT}
+    </update>
+    <update id="updateByPrimaryKey" parameterType="top.zifanxiansheng.zf_lottery.infrastructure.po.UserTakeActivity">
+        update user_take_activity
+        set u_id          = #{uId,jdbcType=VARCHAR},
+            take_id       = #{takeId,jdbcType=BIGINT},
+            activity_id   = #{activityId,jdbcType=BIGINT},
+            activity_name = #{activityName,jdbcType=VARCHAR},
+            take_date     = #{takeDate,jdbcType=TIMESTAMP},
+            take_count    = #{takeCount,jdbcType=INTEGER},
+            strategy_id   = #{strategyId,jdbcType=INTEGER},
+            `state`       = #{state,jdbcType=TINYINT},
+            uuid          = #{uuid,jdbcType=VARCHAR},
+            create_time   = #{createTime,jdbcType=TIMESTAMP},
+            update_time   = #{updateTime,jdbcType=TIMESTAMP}
+        where id = #{id,jdbcType=BIGINT}
+    </update>
 </mapper>

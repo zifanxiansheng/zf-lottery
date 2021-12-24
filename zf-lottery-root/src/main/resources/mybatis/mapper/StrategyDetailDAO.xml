@@ -23,17 +23,18 @@
         where id = #{id,jdbcType=BIGINT}
     </select>
     <delete id="deleteByPrimaryKey" parameterType="java.lang.Long">
-        delete from strategy_detail
+        delete
+        from strategy_detail
         where id = #{id,jdbcType=BIGINT}
     </delete>
     <insert id="insert" keyColumn="id" keyProperty="id"
             parameterType="top.zifanxiansheng.zf_lottery.infrastructure.po.StrategyDetail" useGeneratedKeys="true">
         insert into strategy_detail (strategy_id, award_id, award_name,
-        award_count, award_surplus_count, award_rate,
-        create_time, update_time)
+                                     award_count, award_surplus_count, award_rate,
+                                     create_time, update_time)
         values (#{strategyId,jdbcType=BIGINT}, #{awardId,jdbcType=VARCHAR}, #{awardName,jdbcType=VARCHAR},
-        #{awardCount,jdbcType=INTEGER}, #{awardSurplusCount,jdbcType=INTEGER}, #{awardRate,jdbcType=DECIMAL},
-        #{createTime,jdbcType=TIMESTAMP}, #{updateTime,jdbcType=TIMESTAMP})
+                #{awardCount,jdbcType=INTEGER}, #{awardSurplusCount,jdbcType=INTEGER}, #{awardRate,jdbcType=DECIMAL},
+                #{createTime,jdbcType=TIMESTAMP}, #{updateTime,jdbcType=TIMESTAMP})
     </insert>
     <insert id="insertSelective" keyColumn="id" keyProperty="id"
             parameterType="top.zifanxiansheng.zf_lottery.infrastructure.po.StrategyDetail" useGeneratedKeys="true">
@@ -159,14 +160,14 @@
     </select>
     <update id="updateByPrimaryKey" parameterType="top.zifanxiansheng.zf_lottery.infrastructure.po.StrategyDetail">
         update strategy_detail
-        set strategy_id = #{strategyId,jdbcType=BIGINT},
-        award_id = #{awardId,jdbcType=VARCHAR},
-        award_name = #{awardName,jdbcType=VARCHAR},
-        award_count = #{awardCount,jdbcType=INTEGER},
-        award_surplus_count = #{awardSurplusCount,jdbcType=INTEGER},
-        award_rate = #{awardRate,jdbcType=DECIMAL},
-        create_time = #{createTime,jdbcType=TIMESTAMP},
-        update_time = #{updateTime,jdbcType=TIMESTAMP}
+        set strategy_id         = #{strategyId,jdbcType=BIGINT},
+            award_id            = #{awardId,jdbcType=VARCHAR},
+            award_name          = #{awardName,jdbcType=VARCHAR},
+            award_count         = #{awardCount,jdbcType=INTEGER},
+            award_surplus_count = #{awardSurplusCount,jdbcType=INTEGER},
+            award_rate          = #{awardRate,jdbcType=DECIMAL},
+            create_time         = #{createTime,jdbcType=TIMESTAMP},
+            update_time         = #{updateTime,jdbcType=TIMESTAMP}
         where id = #{id,jdbcType=BIGINT}
     </update>
 </mapper>

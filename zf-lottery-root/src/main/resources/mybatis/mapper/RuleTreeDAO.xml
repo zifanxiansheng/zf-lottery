@@ -65,6 +65,30 @@
       </if>
     </trim>
   </insert>
+  <select id="selectByKeySelective" parameterType="top.zifanxiansheng.zf_lottery.infrastructure.po.RuleTree">
+    select
+    <include refid="Base_Column_List"/>
+    from rule_tree
+    <where>
+      <set>
+        <if test="treeName != null">
+          tree_name = #{treeName,jdbcType=VARCHAR},
+        </if>
+        <if test="treeDesc != null">
+          tree_desc = #{treeDesc,jdbcType=VARCHAR},
+        </if>
+        <if test="treeRootNodeId != null">
+          tree_root_node_id = #{treeRootNodeId,jdbcType=BIGINT},
+        </if>
+        <if test="createTime != null">
+          create_time = #{createTime,jdbcType=TIMESTAMP},
+        </if>
+        <if test="updateTime != null">
+          update_time = #{updateTime,jdbcType=TIMESTAMP},
+        </if>
+      </set>
+    </where>
+  </select>
   <update id="updateByPrimaryKeySelective" parameterType="top.zifanxiansheng.zf_lottery.infrastructure.po.RuleTree">
     update rule_tree
     <set>

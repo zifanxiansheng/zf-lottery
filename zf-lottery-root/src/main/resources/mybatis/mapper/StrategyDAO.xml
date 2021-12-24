@@ -1,134 +1,170 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="top.zifanxiansheng.zf_lottery.infrastructure.dao.StrategyDAO">
-  <resultMap id="BaseResultMap" type="top.zifanxiansheng.zf_lottery.infrastructure.po.Strategy">
-    <id column="id" jdbcType="BIGINT" property="id" />
-    <result column="strategy_id" jdbcType="BIGINT" property="strategyId" />
-    <result column="strategy_desc" jdbcType="VARCHAR" property="strategyDesc" />
-    <result column="strategy_mode" jdbcType="TINYINT" property="strategyMode" />
-    <result column="grant_type" jdbcType="TINYINT" property="grantType" />
-    <result column="grant_date" jdbcType="TIMESTAMP" property="grantDate" />
-    <result column="ext_info" jdbcType="VARCHAR" property="extInfo" />
-    <result column="create_time" jdbcType="TIMESTAMP" property="createTime" />
-    <result column="update_time" jdbcType="TIMESTAMP" property="updateTime" />
-  </resultMap>
-  <sql id="Base_Column_List">
-    id, strategy_id, strategy_desc, strategy_mode, grant_type, grant_date, ext_info, 
-    create_time, update_time
-  </sql>
-  <select id="selectByPrimaryKey" parameterType="java.lang.Long" resultMap="BaseResultMap">
-    select 
-    <include refid="Base_Column_List" />
-    from strategy
-    where id = #{id,jdbcType=BIGINT}
-  </select>
-  <delete id="deleteByPrimaryKey" parameterType="java.lang.Long">
-    delete from strategy
-    where id = #{id,jdbcType=BIGINT}
-  </delete>
-  <insert id="insert" keyColumn="id" keyProperty="id" parameterType="top.zifanxiansheng.zf_lottery.infrastructure.po.Strategy" useGeneratedKeys="true">
-    insert into strategy (strategy_id, strategy_desc, strategy_mode, 
-      grant_type, grant_date, ext_info, 
-      create_time, update_time)
-    values (#{strategyId,jdbcType=BIGINT}, #{strategyDesc,jdbcType=VARCHAR}, #{strategyMode,jdbcType=TINYINT}, 
-      #{grantType,jdbcType=TINYINT}, #{grantDate,jdbcType=TIMESTAMP}, #{extInfo,jdbcType=VARCHAR}, 
-      #{createTime,jdbcType=TIMESTAMP}, #{updateTime,jdbcType=TIMESTAMP})
-  </insert>
-  <insert id="insertSelective" keyColumn="id" keyProperty="id" parameterType="top.zifanxiansheng.zf_lottery.infrastructure.po.Strategy" useGeneratedKeys="true">
-    insert into strategy
-    <trim prefix="(" suffix=")" suffixOverrides=",">
-      <if test="strategyId != null">
-        strategy_id,
-      </if>
-      <if test="strategyDesc != null">
-        strategy_desc,
-      </if>
-      <if test="strategyMode != null">
-        strategy_mode,
-      </if>
-      <if test="grantType != null">
-        grant_type,
-      </if>
-      <if test="grantDate != null">
-        grant_date,
-      </if>
-      <if test="extInfo != null">
-        ext_info,
-      </if>
-      <if test="createTime != null">
-        create_time,
-      </if>
-      <if test="updateTime != null">
-        update_time,
-      </if>
-    </trim>
-    <trim prefix="values (" suffix=")" suffixOverrides=",">
-      <if test="strategyId != null">
-        #{strategyId,jdbcType=BIGINT},
-      </if>
-      <if test="strategyDesc != null">
-        #{strategyDesc,jdbcType=VARCHAR},
-      </if>
-      <if test="strategyMode != null">
-        #{strategyMode,jdbcType=TINYINT},
-      </if>
-      <if test="grantType != null">
-        #{grantType,jdbcType=TINYINT},
-      </if>
-      <if test="grantDate != null">
-        #{grantDate,jdbcType=TIMESTAMP},
-      </if>
-      <if test="extInfo != null">
-        #{extInfo,jdbcType=VARCHAR},
-      </if>
-      <if test="createTime != null">
-        #{createTime,jdbcType=TIMESTAMP},
-      </if>
-      <if test="updateTime != null">
-        #{updateTime,jdbcType=TIMESTAMP},
-      </if>
-    </trim>
-  </insert>
-  <update id="updateByPrimaryKeySelective" parameterType="top.zifanxiansheng.zf_lottery.infrastructure.po.Strategy">
-    update strategy
-    <set>
-      <if test="strategyId != null">
-        strategy_id = #{strategyId,jdbcType=BIGINT},
-      </if>
-      <if test="strategyDesc != null">
-        strategy_desc = #{strategyDesc,jdbcType=VARCHAR},
-      </if>
-      <if test="strategyMode != null">
-        strategy_mode = #{strategyMode,jdbcType=TINYINT},
-      </if>
-      <if test="grantType != null">
-        grant_type = #{grantType,jdbcType=TINYINT},
-      </if>
-      <if test="grantDate != null">
-        grant_date = #{grantDate,jdbcType=TIMESTAMP},
-      </if>
-      <if test="extInfo != null">
-        ext_info = #{extInfo,jdbcType=VARCHAR},
-      </if>
-      <if test="createTime != null">
-        create_time = #{createTime,jdbcType=TIMESTAMP},
-      </if>
-      <if test="updateTime != null">
-        update_time = #{updateTime,jdbcType=TIMESTAMP},
-      </if>
-    </set>
-    where id = #{id,jdbcType=BIGINT}
-  </update>
-  <update id="updateByPrimaryKey" parameterType="top.zifanxiansheng.zf_lottery.infrastructure.po.Strategy">
-    update strategy
-    set strategy_id = #{strategyId,jdbcType=BIGINT},
-      strategy_desc = #{strategyDesc,jdbcType=VARCHAR},
-      strategy_mode = #{strategyMode,jdbcType=TINYINT},
-      grant_type = #{grantType,jdbcType=TINYINT},
-      grant_date = #{grantDate,jdbcType=TIMESTAMP},
-      ext_info = #{extInfo,jdbcType=VARCHAR},
-      create_time = #{createTime,jdbcType=TIMESTAMP},
-      update_time = #{updateTime,jdbcType=TIMESTAMP}
-    where id = #{id,jdbcType=BIGINT}
-  </update>
+    <resultMap id="BaseResultMap" type="top.zifanxiansheng.zf_lottery.infrastructure.po.Strategy">
+        <id column="id" jdbcType="BIGINT" property="id"/>
+        <result column="strategy_id" jdbcType="BIGINT" property="strategyId"/>
+        <result column="strategy_desc" jdbcType="VARCHAR" property="strategyDesc"/>
+        <result column="strategy_mode" jdbcType="TINYINT" property="strategyMode"/>
+        <result column="grant_type" jdbcType="TINYINT" property="grantType"/>
+        <result column="grant_date" jdbcType="TIMESTAMP" property="grantDate"/>
+        <result column="ext_info" jdbcType="VARCHAR" property="extInfo"/>
+        <result column="create_time" jdbcType="TIMESTAMP" property="createTime"/>
+        <result column="update_time" jdbcType="TIMESTAMP" property="updateTime"/>
+    </resultMap>
+    <sql id="Base_Column_List">
+        id, strategy_id, strategy_desc, strategy_mode, grant_type, grant_date, ext_info,
+        create_time, update_time
+    </sql>
+    <select id="selectByPrimaryKey" parameterType="java.lang.Long" resultMap="BaseResultMap">
+        select
+        <include refid="Base_Column_List"/>
+        from strategy
+        where id = #{id,jdbcType=BIGINT}
+    </select>
+    <delete id="deleteByPrimaryKey" parameterType="java.lang.Long">
+        delete
+        from strategy
+        where id = #{id,jdbcType=BIGINT}
+    </delete>
+    <insert id="insert" keyColumn="id" keyProperty="id"
+            parameterType="top.zifanxiansheng.zf_lottery.infrastructure.po.Strategy" useGeneratedKeys="true">
+        insert into strategy (strategy_id, strategy_desc, strategy_mode,
+                              grant_type, grant_date, ext_info,
+                              create_time, update_time)
+        values (#{strategyId,jdbcType=BIGINT}, #{strategyDesc,jdbcType=VARCHAR}, #{strategyMode,jdbcType=TINYINT},
+                #{grantType,jdbcType=TINYINT}, #{grantDate,jdbcType=TIMESTAMP}, #{extInfo,jdbcType=VARCHAR},
+                #{createTime,jdbcType=TIMESTAMP}, #{updateTime,jdbcType=TIMESTAMP})
+    </insert>
+    <insert id="insertSelective" keyColumn="id" keyProperty="id"
+            parameterType="top.zifanxiansheng.zf_lottery.infrastructure.po.Strategy" useGeneratedKeys="true">
+        insert into strategy
+        <trim prefix="(" suffix=")" suffixOverrides=",">
+            <if test="strategyId != null">
+                strategy_id,
+            </if>
+            <if test="strategyDesc != null">
+                strategy_desc,
+            </if>
+            <if test="strategyMode != null">
+                strategy_mode,
+            </if>
+            <if test="grantType != null">
+                grant_type,
+            </if>
+            <if test="grantDate != null">
+                grant_date,
+            </if>
+            <if test="extInfo != null">
+                ext_info,
+            </if>
+            <if test="createTime != null">
+                create_time,
+            </if>
+            <if test="updateTime != null">
+                update_time,
+            </if>
+        </trim>
+        <trim prefix="values (" suffix=")" suffixOverrides=",">
+            <if test="strategyId != null">
+                #{strategyId,jdbcType=BIGINT},
+            </if>
+            <if test="strategyDesc != null">
+                #{strategyDesc,jdbcType=VARCHAR},
+            </if>
+            <if test="strategyMode != null">
+                #{strategyMode,jdbcType=TINYINT},
+            </if>
+            <if test="grantType != null">
+                #{grantType,jdbcType=TINYINT},
+            </if>
+            <if test="grantDate != null">
+                #{grantDate,jdbcType=TIMESTAMP},
+            </if>
+            <if test="extInfo != null">
+                #{extInfo,jdbcType=VARCHAR},
+            </if>
+            <if test="createTime != null">
+                #{createTime,jdbcType=TIMESTAMP},
+            </if>
+            <if test="updateTime != null">
+                #{updateTime,jdbcType=TIMESTAMP},
+            </if>
+        </trim>
+    </insert>
+    <select id="selectByKeySelective" parameterType="top.zifanxiansheng.zf_lottery.infrastructure.po.Strategy">
+        select
+        <include refid="Base_Column_List"/>
+        from strategy
+        <where>
+            <set>
+                <if test="strategyId != null">
+                    strategy_id = #{strategyId,jdbcType=BIGINT},
+                </if>
+                <if test="strategyDesc != null">
+                    strategy_desc = #{strategyDesc,jdbcType=VARCHAR},
+                </if>
+                <if test="strategyMode != null">
+                    strategy_mode = #{strategyMode,jdbcType=TINYINT},
+                </if>
+                <if test="grantType != null">
+                    grant_type = #{grantType,jdbcType=TINYINT},
+                </if>
+                <if test="grantDate != null">
+                    grant_date = #{grantDate,jdbcType=TIMESTAMP},
+                </if>
+                <if test="extInfo != null">
+                    ext_info = #{extInfo,jdbcType=VARCHAR},
+                </if>
+                <if test="createTime != null">
+                    create_time = #{createTime,jdbcType=TIMESTAMP},
+                </if>
+                <if test="updateTime != null">
+                    update_time = #{updateTime,jdbcType=TIMESTAMP},
+                </if>
+            </set>
+        </where>
+    </select>
+    <update id="updateByPrimaryKeySelective" parameterType="top.zifanxiansheng.zf_lottery.infrastructure.po.Strategy">
+        update strategy
+        <set>
+            <if test="strategyId != null">
+                strategy_id = #{strategyId,jdbcType=BIGINT},
+            </if>
+            <if test="strategyDesc != null">
+                strategy_desc = #{strategyDesc,jdbcType=VARCHAR},
+            </if>
+            <if test="strategyMode != null">
+                strategy_mode = #{strategyMode,jdbcType=TINYINT},
+            </if>
+            <if test="grantType != null">
+                grant_type = #{grantType,jdbcType=TINYINT},
+            </if>
+            <if test="grantDate != null">
+                grant_date = #{grantDate,jdbcType=TIMESTAMP},
+            </if>
+            <if test="extInfo != null">
+                ext_info = #{extInfo,jdbcType=VARCHAR},
+            </if>
+            <if test="createTime != null">
+                create_time = #{createTime,jdbcType=TIMESTAMP},
+            </if>
+            <if test="updateTime != null">
+                update_time = #{updateTime,jdbcType=TIMESTAMP},
+            </if>
+        </set>
+        where id = #{id,jdbcType=BIGINT}
+    </update>
+    <update id="updateByPrimaryKey" parameterType="top.zifanxiansheng.zf_lottery.infrastructure.po.Strategy">
+        update strategy
+        set strategy_id   = #{strategyId,jdbcType=BIGINT},
+            strategy_desc = #{strategyDesc,jdbcType=VARCHAR},
+            strategy_mode = #{strategyMode,jdbcType=TINYINT},
+            grant_type    = #{grantType,jdbcType=TINYINT},
+            grant_date    = #{grantDate,jdbcType=TIMESTAMP},
+            ext_info      = #{extInfo,jdbcType=VARCHAR},
+            create_time   = #{createTime,jdbcType=TIMESTAMP},
+            update_time   = #{updateTime,jdbcType=TIMESTAMP}
+        where id = #{id,jdbcType=BIGINT}
+    </update>
 </mapper>
