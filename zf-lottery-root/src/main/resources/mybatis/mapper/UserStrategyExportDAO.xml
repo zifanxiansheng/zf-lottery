@@ -1,0 +1,229 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="top.zifanxiansheng.zf_lottery.infrastructure.dao.UserStrategyExportDAO">
+  <resultMap id="BaseResultMap" type="top.zifanxiansheng.zf_lottery.infrastructure.po.UserStrategyExport">
+    <id column="id" jdbcType="BIGINT" property="id" />
+    <result column="u_id" jdbcType="VARCHAR" property="uId" />
+    <result column="activity_id" jdbcType="BIGINT" property="activityId" />
+    <result column="order_id" jdbcType="BIGINT" property="orderId" />
+    <result column="strategy_id" jdbcType="BIGINT" property="strategyId" />
+    <result column="strategy_mode" jdbcType="TINYINT" property="strategyMode" />
+    <result column="grant_type" jdbcType="TINYINT" property="grantType" />
+    <result column="grant_date" jdbcType="TIMESTAMP" property="grantDate" />
+    <result column="grant_state" jdbcType="TINYINT" property="grantState" />
+    <result column="award_id" jdbcType="VARCHAR" property="awardId" />
+    <result column="award_type" jdbcType="TINYINT" property="awardType" />
+    <result column="award_name" jdbcType="VARCHAR" property="awardName" />
+    <result column="award_content" jdbcType="VARCHAR" property="awardContent" />
+    <result column="uuid" jdbcType="VARCHAR" property="uuid" />
+    <result column="mq_state" jdbcType="TINYINT" property="mqState" />
+    <result column="create_time" jdbcType="TIMESTAMP" property="createTime" />
+    <result column="update_time" jdbcType="TIMESTAMP" property="updateTime" />
+  </resultMap>
+  <sql id="Base_Column_List">
+    id, u_id, activity_id, order_id, strategy_id, strategy_mode, grant_type, grant_date, 
+    grant_state, award_id, award_type, award_name, award_content, uuid, mq_state, create_time, 
+    update_time
+  </sql>
+  <select id="selectByPrimaryKey" parameterType="java.lang.Long" resultMap="BaseResultMap">
+    select 
+    <include refid="Base_Column_List" />
+    from user_strategy_export_000
+    where id = #{id,jdbcType=BIGINT}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Long">
+    delete from user_strategy_export_000
+    where id = #{id,jdbcType=BIGINT}
+  </delete>
+  <insert id="insert" keyColumn="id" keyProperty="id" parameterType="top.zifanxiansheng.zf_lottery.infrastructure.po.UserStrategyExport" useGeneratedKeys="true">
+    insert into user_strategy_export_000 (u_id, activity_id, order_id, 
+      strategy_id, strategy_mode, grant_type, 
+      grant_date, grant_state, award_id, 
+      award_type, award_name, award_content, 
+      uuid, mq_state, create_time, 
+      update_time)
+    values (#{uId,jdbcType=VARCHAR}, #{activityId,jdbcType=BIGINT}, #{orderId,jdbcType=BIGINT}, 
+      #{strategyId,jdbcType=BIGINT}, #{strategyMode,jdbcType=TINYINT}, #{grantType,jdbcType=TINYINT}, 
+      #{grantDate,jdbcType=TIMESTAMP}, #{grantState,jdbcType=TINYINT}, #{awardId,jdbcType=VARCHAR}, 
+      #{awardType,jdbcType=TINYINT}, #{awardName,jdbcType=VARCHAR}, #{awardContent,jdbcType=VARCHAR}, 
+      #{uuid,jdbcType=VARCHAR}, #{mqState,jdbcType=TINYINT}, #{createTime,jdbcType=TIMESTAMP}, 
+      #{updateTime,jdbcType=TIMESTAMP})
+  </insert>
+  <insert id="insertSelective" keyColumn="id" keyProperty="id" parameterType="top.zifanxiansheng.zf_lottery.infrastructure.po.UserStrategyExport" useGeneratedKeys="true">
+    insert into user_strategy_export_000
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="uId != null">
+        u_id,
+      </if>
+      <if test="activityId != null">
+        activity_id,
+      </if>
+      <if test="orderId != null">
+        order_id,
+      </if>
+      <if test="strategyId != null">
+        strategy_id,
+      </if>
+      <if test="strategyMode != null">
+        strategy_mode,
+      </if>
+      <if test="grantType != null">
+        grant_type,
+      </if>
+      <if test="grantDate != null">
+        grant_date,
+      </if>
+      <if test="grantState != null">
+        grant_state,
+      </if>
+      <if test="awardId != null">
+        award_id,
+      </if>
+      <if test="awardType != null">
+        award_type,
+      </if>
+      <if test="awardName != null">
+        award_name,
+      </if>
+      <if test="awardContent != null">
+        award_content,
+      </if>
+      <if test="uuid != null">
+        uuid,
+      </if>
+      <if test="mqState != null">
+        mq_state,
+      </if>
+      <if test="createTime != null">
+        create_time,
+      </if>
+      <if test="updateTime != null">
+        update_time,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides=",">
+      <if test="uId != null">
+        #{uId,jdbcType=VARCHAR},
+      </if>
+      <if test="activityId != null">
+        #{activityId,jdbcType=BIGINT},
+      </if>
+      <if test="orderId != null">
+        #{orderId,jdbcType=BIGINT},
+      </if>
+      <if test="strategyId != null">
+        #{strategyId,jdbcType=BIGINT},
+      </if>
+      <if test="strategyMode != null">
+        #{strategyMode,jdbcType=TINYINT},
+      </if>
+      <if test="grantType != null">
+        #{grantType,jdbcType=TINYINT},
+      </if>
+      <if test="grantDate != null">
+        #{grantDate,jdbcType=TIMESTAMP},
+      </if>
+      <if test="grantState != null">
+        #{grantState,jdbcType=TINYINT},
+      </if>
+      <if test="awardId != null">
+        #{awardId,jdbcType=VARCHAR},
+      </if>
+      <if test="awardType != null">
+        #{awardType,jdbcType=TINYINT},
+      </if>
+      <if test="awardName != null">
+        #{awardName,jdbcType=VARCHAR},
+      </if>
+      <if test="awardContent != null">
+        #{awardContent,jdbcType=VARCHAR},
+      </if>
+      <if test="uuid != null">
+        #{uuid,jdbcType=VARCHAR},
+      </if>
+      <if test="mqState != null">
+        #{mqState,jdbcType=TINYINT},
+      </if>
+      <if test="createTime != null">
+        #{createTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="updateTime != null">
+        #{updateTime,jdbcType=TIMESTAMP},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="top.zifanxiansheng.zf_lottery.infrastructure.po.UserStrategyExport">
+    update user_strategy_export_000
+    <set>
+      <if test="uId != null">
+        u_id = #{uId,jdbcType=VARCHAR},
+      </if>
+      <if test="activityId != null">
+        activity_id = #{activityId,jdbcType=BIGINT},
+      </if>
+      <if test="orderId != null">
+        order_id = #{orderId,jdbcType=BIGINT},
+      </if>
+      <if test="strategyId != null">
+        strategy_id = #{strategyId,jdbcType=BIGINT},
+      </if>
+      <if test="strategyMode != null">
+        strategy_mode = #{strategyMode,jdbcType=TINYINT},
+      </if>
+      <if test="grantType != null">
+        grant_type = #{grantType,jdbcType=TINYINT},
+      </if>
+      <if test="grantDate != null">
+        grant_date = #{grantDate,jdbcType=TIMESTAMP},
+      </if>
+      <if test="grantState != null">
+        grant_state = #{grantState,jdbcType=TINYINT},
+      </if>
+      <if test="awardId != null">
+        award_id = #{awardId,jdbcType=VARCHAR},
+      </if>
+      <if test="awardType != null">
+        award_type = #{awardType,jdbcType=TINYINT},
+      </if>
+      <if test="awardName != null">
+        award_name = #{awardName,jdbcType=VARCHAR},
+      </if>
+      <if test="awardContent != null">
+        award_content = #{awardContent,jdbcType=VARCHAR},
+      </if>
+      <if test="uuid != null">
+        uuid = #{uuid,jdbcType=VARCHAR},
+      </if>
+      <if test="mqState != null">
+        mq_state = #{mqState,jdbcType=TINYINT},
+      </if>
+      <if test="createTime != null">
+        create_time = #{createTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="updateTime != null">
+        update_time = #{updateTime,jdbcType=TIMESTAMP},
+      </if>
+    </set>
+    where id = #{id,jdbcType=BIGINT}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="top.zifanxiansheng.zf_lottery.infrastructure.po.UserStrategyExport">
+    update user_strategy_export_000
+    set u_id = #{uId,jdbcType=VARCHAR},
+      activity_id = #{activityId,jdbcType=BIGINT},
+      order_id = #{orderId,jdbcType=BIGINT},
+      strategy_id = #{strategyId,jdbcType=BIGINT},
+      strategy_mode = #{strategyMode,jdbcType=TINYINT},
+      grant_type = #{grantType,jdbcType=TINYINT},
+      grant_date = #{grantDate,jdbcType=TIMESTAMP},
+      grant_state = #{grantState,jdbcType=TINYINT},
+      award_id = #{awardId,jdbcType=VARCHAR},
+      award_type = #{awardType,jdbcType=TINYINT},
+      award_name = #{awardName,jdbcType=VARCHAR},
+      award_content = #{awardContent,jdbcType=VARCHAR},
+      uuid = #{uuid,jdbcType=VARCHAR},
+      mq_state = #{mqState,jdbcType=TINYINT},
+      create_time = #{createTime,jdbcType=TIMESTAMP},
+      update_time = #{updateTime,jdbcType=TIMESTAMP}
+    where id = #{id,jdbcType=BIGINT}
+  </update>
+</mapper>

@@ -18,10 +18,89 @@
         <module>zf-lottery-application</module>
     </modules>
 
+    <parent>
+        <groupId>org.springframework.boot</groupId>
+        <artifactId>spring-boot-starter-parent</artifactId>
+        <version>2.3.5.RELEASE</version>
+        <relativePath/> <!-- lookup parent from repository -->
+    </parent>
+
+
     <properties>
         <maven.compiler.source>8</maven.compiler.source>
         <maven.compiler.target>8</maven.compiler.target>
     </properties>
 
+    <dependencyManagement>
+        <dependencies>
+            <!-- https://mvnrepository.com/artifact/org.springframework.boot/spring-boot-dependencies -->
+            <dependency>
+                <groupId>org.springframework.boot</groupId>
+                <artifactId>spring-boot-dependencies</artifactId>
+                <version>2.3.5.RELEASE</version>
+                <type>pom</type>
+                <scope>import</scope>
+            </dependency>
 
+            <dependency>
+                <groupId>org.mybatis.spring.boot</groupId>
+                <artifactId>mybatis-spring-boot-starter</artifactId>
+                <version>2.1.4</version>
+            </dependency>
+
+            <!-- https://mvnrepository.com/artifact/org.projectlombok/lombok -->
+            <dependency>
+                <groupId>org.projectlombok</groupId>
+                <artifactId>lombok</artifactId>
+                <version>1.18.20</version>
+            </dependency>
+
+            <!-- https://mvnrepository.com/artifact/org.mybatis/mybatis -->
+            <dependency>
+                <groupId>org.mybatis</groupId>
+                <artifactId>mybatis</artifactId>
+                <version>3.5.6</version>
+            </dependency>
+        <!-- model start-->
+            <dependency>
+                <groupId>top.zifanxiansheng</groupId>
+                <artifactId>zf-lottery-domain</artifactId>
+                <version>1.0</version>
+            </dependency>
+
+            <dependency>
+                <groupId>top.zifanxiansheng</groupId>
+                <artifactId>zf-lottery-application</artifactId>
+                <version>1.0</version>
+            </dependency>
+
+            <dependency>
+                <groupId>top.zifanxiansheng</groupId>
+                <artifactId>zf-lottery-infrastructure</artifactId>
+                <version>1.0</version>
+            </dependency>
+
+            <dependency>
+                <groupId>top.zifanxiansheng</groupId>
+                <artifactId>zf-lottery-common</artifactId>
+                <version>1.0</version>
+            </dependency>
+            <!-- model end-->
+
+            <dependency>
+                <groupId>com.alibaba</groupId>
+                <artifactId>fastjson</artifactId>
+                <version>1.2.78</version>
+            </dependency>
+
+        </dependencies>
+    </dependencyManagement>
+
+    <dependencies>
+        <dependency>
+            <groupId>org.projectlombok</groupId>
+            <artifactId>lombok</artifactId>
+            <version>1.18.20</version>
+        </dependency>
+    </dependencies>
 </project>

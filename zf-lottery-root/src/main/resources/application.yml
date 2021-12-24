@@ -1,0 +1,19 @@
+server:
+  port: 8080
+
+
+
+mybatis:
+  mapper-locations: classpath*:mybatis/mapper/*DAO.xml
+
+
+
+
+spring:
+  datasource:
+    url: jdbc:mysql://rm-bp10423t86c5ac9205o.mysql.rds.aliyuncs.com:3306/lottery
+    username: qlt1_dev
+    password: qlt1_dev
+
+
+

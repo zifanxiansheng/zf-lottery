@@ -1,0 +1,98 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="top.zifanxiansheng.zf_lottery.infrastructure.dao.RuleTreeNodeDAO">
+  <resultMap id="BaseResultMap" type="top.zifanxiansheng.zf_lottery.infrastructure.po.RuleTreeNode">
+    <id column="id" jdbcType="BIGINT" property="id" />
+    <result column="tree_id" jdbcType="INTEGER" property="treeId" />
+    <result column="node_type" jdbcType="INTEGER" property="nodeType" />
+    <result column="node_value" jdbcType="VARCHAR" property="nodeValue" />
+    <result column="rule_key" jdbcType="VARCHAR" property="ruleKey" />
+    <result column="rule_desc" jdbcType="VARCHAR" property="ruleDesc" />
+  </resultMap>
+  <sql id="Base_Column_List">
+    id, tree_id, node_type, node_value, rule_key, rule_desc
+  </sql>
+  <select id="selectByPrimaryKey" parameterType="java.lang.Long" resultMap="BaseResultMap">
+    select 
+    <include refid="Base_Column_List" />
+    from rule_tree_node
+    where id = #{id,jdbcType=BIGINT}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Long">
+    delete from rule_tree_node
+    where id = #{id,jdbcType=BIGINT}
+  </delete>
+  <insert id="insert" keyColumn="id" keyProperty="id" parameterType="top.zifanxiansheng.zf_lottery.infrastructure.po.RuleTreeNode" useGeneratedKeys="true">
+    insert into rule_tree_node (tree_id, node_type, node_value, 
+      rule_key, rule_desc)
+    values (#{treeId,jdbcType=INTEGER}, #{nodeType,jdbcType=INTEGER}, #{nodeValue,jdbcType=VARCHAR}, 
+      #{ruleKey,jdbcType=VARCHAR}, #{ruleDesc,jdbcType=VARCHAR})
+  </insert>
+  <insert id="insertSelective" keyColumn="id" keyProperty="id" parameterType="top.zifanxiansheng.zf_lottery.infrastructure.po.RuleTreeNode" useGeneratedKeys="true">
+    insert into rule_tree_node
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="treeId != null">
+        tree_id,
+      </if>
+      <if test="nodeType != null">
+        node_type,
+      </if>
+      <if test="nodeValue != null">
+        node_value,
+      </if>
+      <if test="ruleKey != null">
+        rule_key,
+      </if>
+      <if test="ruleDesc != null">
+        rule_desc,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides=",">
+      <if test="treeId != null">
+        #{treeId,jdbcType=INTEGER},
+      </if>
+      <if test="nodeType != null">
+        #{nodeType,jdbcType=INTEGER},
+      </if>
+      <if test="nodeValue != null">
+        #{nodeValue,jdbcType=VARCHAR},
+      </if>
+      <if test="ruleKey != null">
+        #{ruleKey,jdbcType=VARCHAR},
+      </if>
+      <if test="ruleDesc != null">
+        #{ruleDesc,jdbcType=VARCHAR},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="top.zifanxiansheng.zf_lottery.infrastructure.po.RuleTreeNode">
+    update rule_tree_node
+    <set>
+      <if test="treeId != null">
+        tree_id = #{treeId,jdbcType=INTEGER},
+      </if>
+      <if test="nodeType != null">
+        node_type = #{nodeType,jdbcType=INTEGER},
+      </if>
+      <if test="nodeValue != null">
+        node_value = #{nodeValue,jdbcType=VARCHAR},
+      </if>
+      <if test="ruleKey != null">
+        rule_key = #{ruleKey,jdbcType=VARCHAR},
+      </if>
+      <if test="ruleDesc != null">
+        rule_desc = #{ruleDesc,jdbcType=VARCHAR},
+      </if>
+    </set>
+    where id = #{id,jdbcType=BIGINT}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="top.zifanxiansheng.zf_lottery.infrastructure.po.RuleTreeNode">
+    update rule_tree_node
+    set tree_id = #{treeId,jdbcType=INTEGER},
+      node_type = #{nodeType,jdbcType=INTEGER},
+      node_value = #{nodeValue,jdbcType=VARCHAR},
+      rule_key = #{ruleKey,jdbcType=VARCHAR},
+      rule_desc = #{ruleDesc,jdbcType=VARCHAR}
+    where id = #{id,jdbcType=BIGINT}
+  </update>
+</mapper>
