@@ -75,31 +75,30 @@
             </if>
         </trim>
     </insert>
-    <select id="selectByKeySelective" parameterType="top.zifanxiansheng.zf_lottery.infrastructure.po.Award">
+    <select id="selectByKeySelective" parameterType="top.zifanxiansheng.zf_lottery.infrastructure.po.Award"
+            resultMap="BaseResultMap">
         select
         <include refid="Base_Column_List"/>
         from award
         <where>
-            <set>
-                <if test="awardId != null">
-                    award_id = #{awardId,jdbcType=VARCHAR},
-                </if>
-                <if test="awardType != null">
-                    award_type = #{awardType,jdbcType=TINYINT},
-                </if>
-                <if test="awardName != null">
-                    award_name = #{awardName,jdbcType=VARCHAR},
-                </if>
-                <if test="awardContent != null">
-                    award_content = #{awardContent,jdbcType=VARCHAR},
-                </if>
-                <if test="createTime != null">
-                    create_time = #{createTime,jdbcType=TIMESTAMP},
-                </if>
-                <if test="updateTime != null">
-                    update_time = #{updateTime,jdbcType=TIMESTAMP},
-                </if>
-            </set>
+            <if test="awardId != null">
+                award_id = #{awardId,jdbcType=VARCHAR}
+            </if>
+            <if test="awardType != null">
+                and award_type = #{awardType,jdbcType=TINYINT}
+            </if>
+            <if test="awardName != null">
+                and award_name = #{awardName,jdbcType=VARCHAR}
+            </if>
+            <if test="awardContent != null">
+                and award_content = #{awardContent,jdbcType=VARCHAR}
+            </if>
+            <if test="createTime != null">
+                and create_time = #{createTime,jdbcType=TIMESTAMP}
+            </if>
+            <if test="updateTime != null">
+                and update_time = #{updateTime,jdbcType=TIMESTAMP}
+            </if>
         </where>
     </select>
 

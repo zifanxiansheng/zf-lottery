@@ -135,52 +135,51 @@
         </trim>
     </insert>
 
-    <select id="selectByKeySelective" parameterType="top.zifanxiansheng.zf_lottery.infrastructure.po.Activity">
+    <select id="selectByKeySelective" parameterType="top.zifanxiansheng.zf_lottery.infrastructure.po.Activity"
+            resultMap="BaseResultMap">
         select
         <include refid="Base_Column_List"/>
         from activity
         <where>
-            <set>
-                <if test="activityId != null">
-                    activity_id = #{activityId,jdbcType=BIGINT},
-                </if>
-                <if test="activityName != null">
-                    activity_name = #{activityName,jdbcType=VARCHAR},
-                </if>
-                <if test="activityDesc != null">
-                    activity_desc = #{activityDesc,jdbcType=VARCHAR},
-                </if>
-                <if test="beginDateTime != null">
-                    begin_date_time = #{beginDateTime,jdbcType=TIMESTAMP},
-                </if>
-                <if test="endDateTime != null">
-                    end_date_time = #{endDateTime,jdbcType=TIMESTAMP},
-                </if>
-                <if test="stockCount != null">
-                    stock_count = #{stockCount,jdbcType=INTEGER},
-                </if>
-                <if test="stockSurplusCount != null">
-                    stock_surplus_count = #{stockSurplusCount,jdbcType=INTEGER},
-                </if>
-                <if test="takeCount != null">
-                    take_count = #{takeCount,jdbcType=INTEGER},
-                </if>
-                <if test="strategyId != null">
-                    strategy_id = #{strategyId,jdbcType=BIGINT},
-                </if>
-                <if test="state != null">
-                    `state` = #{state,jdbcType=TINYINT},
-                </if>
-                <if test="creator != null">
-                    creator = #{creator,jdbcType=VARCHAR},
-                </if>
-                <if test="createTime != null">
-                    create_time = #{createTime,jdbcType=TIMESTAMP},
-                </if>
-                <if test="updateTime != null">
-                    update_time = #{updateTime,jdbcType=TIMESTAMP},
-                </if>
-            </set>
+            <if test="activityId != null">
+                activity_id = #{activityId,jdbcType=BIGINT}
+            </if>
+            <if test="activityName != null">
+                and activity_name = #{activityName,jdbcType=VARCHAR}
+            </if>
+            <if test="activityDesc != null">
+                and activity_desc = #{activityDesc,jdbcType=VARCHAR}
+            </if>
+            <if test="beginDateTime != null">
+                and begin_date_time = #{beginDateTime,jdbcType=TIMESTAMP}
+            </if>
+            <if test="endDateTime != null">
+                and end_date_time = #{endDateTime,jdbcType=TIMESTAMP}
+            </if>
+            <if test="stockCount != null">
+                and stock_count = #{stockCount,jdbcType=INTEGER}
+            </if>
+            <if test="stockSurplusCount != null">
+                and stock_surplus_count = #{stockSurplusCount,jdbcType=INTEGER}
+            </if>
+            <if test="takeCount != null">
+                and take_count = #{takeCount,jdbcType=INTEGER}
+            </if>
+            <if test="strategyId != null">
+                and strategy_id = #{strategyId,jdbcType=BIGINT}
+            </if>
+            <if test="state != null">
+                and `state` = #{state,jdbcType=TINYINT}
+            </if>
+            <if test="creator != null">
+                and creator = #{creator,jdbcType=VARCHAR}
+            </if>
+            <if test="createTime != null">
+                and create_time = #{createTime,jdbcType=TIMESTAMP}
+            </if>
+            <if test="updateTime != null">
+                and update_time = #{updateTime,jdbcType=TIMESTAMP}
+            </if>
         </where>
     </select>
 

@@ -2,16 +2,12 @@ package top.zifanxiansheng.zf_lottery_infrastructure;
 
 import lombok.extern.slf4j.Slf4j;
 import org.junit.Test;
-import top.zifanxiansheng.zf_lottery.domain.strategy.service.handler.DrawHandlerConfig;
-
-import javax.annotation.Resource;
 
 @Slf4j
 public class SingleRateRandomCalcAlgorithmTest extends BaseTest {
     private final int HASH_INCREMENT = 0x61c88647; // 黄金分割线
     private final int RATE_TUPLE_LENGTH = 128;
-    @Resource
-    DrawHandlerConfig handlerConfig;
+
 
     @Test
     public void test_hash_index() {

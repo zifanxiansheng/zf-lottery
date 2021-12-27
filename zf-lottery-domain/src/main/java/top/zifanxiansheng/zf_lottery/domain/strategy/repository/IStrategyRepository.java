@@ -1,6 +1,7 @@
 package top.zifanxiansheng.zf_lottery.domain.strategy.repository;
 
 import top.zifanxiansheng.zf_lottery.domain.strategy.model.bo.AwardRateInfo;
+import top.zifanxiansheng.zf_lottery.domain.strategy.model.bo.StrategyRich;
 
 import java.util.List;
 
@@ -17,4 +18,14 @@ public interface IStrategyRepository {
      * @return 奖品中奖概率集合
      */
     List<AwardRateInfo> queryAwardRateListByStrategyId(Long strategyId);
+
+    /**
+     * queryStrategyRich
+     *
+     * @param strategyId 策略ID
+     * @return StrategyRich
+     */
+    StrategyRich queryStrategyRich(Long strategyId);
+
+
 }

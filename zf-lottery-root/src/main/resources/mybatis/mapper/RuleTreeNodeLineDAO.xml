@@ -68,28 +68,27 @@
             </if>
         </trim>
     </insert>
-    <select id="selectByKeySelective" parameterType="top.zifanxiansheng.zf_lottery.infrastructure.po.RuleTreeNodeLine">
+    <select id="selectByKeySelective" parameterType="top.zifanxiansheng.zf_lottery.infrastructure.po.RuleTreeNodeLine"
+            resultMap="BaseResultMap">
         select
         <include refid="Base_Column_List"/>
         from rule_tree_node_line
         <where>
-            <set>
-                <if test="treeId != null">
-                    tree_id = #{treeId,jdbcType=BIGINT},
-                </if>
-                <if test="nodeIdFrom != null">
-                    node_id_from = #{nodeIdFrom,jdbcType=BIGINT},
-                </if>
-                <if test="nodeIdTo != null">
-                    node_id_to = #{nodeIdTo,jdbcType=BIGINT},
-                </if>
-                <if test="ruleLimitType != null">
-                    rule_limit_type = #{ruleLimitType,jdbcType=INTEGER},
-                </if>
-                <if test="ruleLimitValue != null">
-                    rule_limit_value = #{ruleLimitValue,jdbcType=VARCHAR},
-                </if>
-            </set>
+            <if test="treeId != null">
+                tree_id = #{treeId,jdbcType=BIGINT}
+            </if>
+            <if test="nodeIdFrom != null">
+                and node_id_from = #{nodeIdFrom,jdbcType=BIGINT}
+            </if>
+            <if test="nodeIdTo != null">
+                and node_id_to = #{nodeIdTo,jdbcType=BIGINT}
+            </if>
+            <if test="ruleLimitType != null">
+                and rule_limit_type = #{ruleLimitType,jdbcType=INTEGER}
+            </if>
+            <if test="ruleLimitValue != null">
+                and rule_limit_value = #{ruleLimitValue,jdbcType=VARCHAR}
+            </if>
         </where>
     </select>
     <update id="updateByPrimaryKeySelective"

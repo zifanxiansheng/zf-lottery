@@ -156,61 +156,60 @@
         </trim>
     </insert>
     <select id="selectByKeySelective"
-            parameterType="top.zifanxiansheng.zf_lottery.infrastructure.po.UserStrategyExport">
+            parameterType="top.zifanxiansheng.zf_lottery.infrastructure.po.UserStrategyExport"
+            resultMap="BaseResultMap">
         select
         <include refid="Base_Column_List"/>
         from user_strategy_export_000
         <where>
-            <set>
-                <if test="uId != null">
-                    u_id = #{uId,jdbcType=VARCHAR},
-                </if>
-                <if test="activityId != null">
-                    activity_id = #{activityId,jdbcType=BIGINT},
-                </if>
-                <if test="orderId != null">
-                    order_id = #{orderId,jdbcType=BIGINT},
-                </if>
-                <if test="strategyId != null">
-                    strategy_id = #{strategyId,jdbcType=BIGINT},
-                </if>
-                <if test="strategyMode != null">
-                    strategy_mode = #{strategyMode,jdbcType=TINYINT},
-                </if>
-                <if test="grantType != null">
-                    grant_type = #{grantType,jdbcType=TINYINT},
-                </if>
-                <if test="grantDate != null">
-                    grant_date = #{grantDate,jdbcType=TIMESTAMP},
-                </if>
-                <if test="grantState != null">
-                    grant_state = #{grantState,jdbcType=TINYINT},
-                </if>
-                <if test="awardId != null">
-                    award_id = #{awardId,jdbcType=VARCHAR},
-                </if>
-                <if test="awardType != null">
-                    award_type = #{awardType,jdbcType=TINYINT},
-                </if>
-                <if test="awardName != null">
-                    award_name = #{awardName,jdbcType=VARCHAR},
-                </if>
-                <if test="awardContent != null">
-                    award_content = #{awardContent,jdbcType=VARCHAR},
-                </if>
-                <if test="uuid != null">
-                    uuid = #{uuid,jdbcType=VARCHAR},
-                </if>
-                <if test="mqState != null">
-                    mq_state = #{mqState,jdbcType=TINYINT},
-                </if>
-                <if test="createTime != null">
-                    create_time = #{createTime,jdbcType=TIMESTAMP},
-                </if>
-                <if test="updateTime != null">
-                    update_time = #{updateTime,jdbcType=TIMESTAMP},
-                </if>
-            </set>
+            <if test="uId != null">
+                u_id = #{uId,jdbcType=VARCHAR}
+            </if>
+            <if test="activityId != null">
+                and activity_id = #{activityId,jdbcType=BIGINT}
+            </if>
+            <if test="orderId != null">
+                and order_id = #{orderId,jdbcType=BIGINT}
+            </if>
+            <if test="strategyId != null">
+                and strategy_id = #{strategyId,jdbcType=BIGINT}
+            </if>
+            <if test="strategyMode != null">
+                and strategy_mode = #{strategyMode,jdbcType=TINYINT}
+            </if>
+            <if test="grantType != null">
+                and grant_type = #{grantType,jdbcType=TINYINT}
+            </if>
+            <if test="grantDate != null">
+                and grant_date = #{grantDate,jdbcType=TIMESTAMP}
+            </if>
+            <if test="grantState != null">
+                and grant_state = #{grantState,jdbcType=TINYINT}
+            </if>
+            <if test="awardId != null">
+                and award_id = #{awardId,jdbcType=VARCHAR}
+            </if>
+            <if test="awardType != null">
+                and award_type = #{awardType,jdbcType=TINYINT}
+            </if>
+            <if test="awardName != null">
+                and award_name = #{awardName,jdbcType=VARCHAR}
+            </if>
+            <if test="awardContent != null">
+                and award_content = #{awardContent,jdbcType=VARCHAR}
+            </if>
+            <if test="uuid != null">
+                and uuid = #{uuid,jdbcType=VARCHAR}
+            </if>
+            <if test="mqState != null">
+                and mq_state = #{mqState,jdbcType=TINYINT}
+            </if>
+            <if test="createTime != null">
+                and create_time = #{createTime,jdbcType=TIMESTAMP}
+            </if>
+            <if test="updateTime != null">
+                and update_time = #{updateTime,jdbcType=TIMESTAMP}
+            </if>
         </where>
     </select>
     <update id="updateByPrimaryKeySelective"

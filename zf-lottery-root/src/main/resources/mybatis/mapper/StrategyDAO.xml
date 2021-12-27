@@ -92,37 +92,36 @@
             </if>
         </trim>
     </insert>
-    <select id="selectByKeySelective" parameterType="top.zifanxiansheng.zf_lottery.infrastructure.po.Strategy">
+    <select id="selectByKeySelective" parameterType="top.zifanxiansheng.zf_lottery.infrastructure.po.Strategy"
+            resultMap="BaseResultMap">
         select
         <include refid="Base_Column_List"/>
         from strategy
         <where>
-            <set>
-                <if test="strategyId != null">
-                    strategy_id = #{strategyId,jdbcType=BIGINT},
-                </if>
-                <if test="strategyDesc != null">
-                    strategy_desc = #{strategyDesc,jdbcType=VARCHAR},
-                </if>
-                <if test="strategyMode != null">
-                    strategy_mode = #{strategyMode,jdbcType=TINYINT},
-                </if>
-                <if test="grantType != null">
-                    grant_type = #{grantType,jdbcType=TINYINT},
-                </if>
-                <if test="grantDate != null">
-                    grant_date = #{grantDate,jdbcType=TIMESTAMP},
-                </if>
-                <if test="extInfo != null">
-                    ext_info = #{extInfo,jdbcType=VARCHAR},
-                </if>
-                <if test="createTime != null">
-                    create_time = #{createTime,jdbcType=TIMESTAMP},
-                </if>
-                <if test="updateTime != null">
-                    update_time = #{updateTime,jdbcType=TIMESTAMP},
-                </if>
-            </set>
+            <if test="strategyId != null">
+                strategy_id = #{strategyId,jdbcType=BIGINT}
+            </if>
+            <if test="strategyDesc != null">
+                and strategy_desc = #{strategyDesc,jdbcType=VARCHAR}
+            </if>
+            <if test="strategyMode != null">
+                and strategy_mode = #{strategyMode,jdbcType=TINYINT}
+            </if>
+            <if test="grantType != null">
+                and grant_type = #{grantType,jdbcType=TINYINT}
+            </if>
+            <if test="grantDate != null">
+                and grant_date = #{grantDate,jdbcType=TIMESTAMP}
+            </if>
+            <if test="extInfo != null">
+                and ext_info = #{extInfo,jdbcType=VARCHAR}
+            </if>
+            <if test="createTime != null">
+                and create_time = #{createTime,jdbcType=TIMESTAMP}
+            </if>
+            <if test="updateTime != null">
+                and update_time = #{updateTime,jdbcType=TIMESTAMP}
+            </if>
         </where>
     </select>
     <update id="updateByPrimaryKeySelective" parameterType="top.zifanxiansheng.zf_lottery.infrastructure.po.Strategy">

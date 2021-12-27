@@ -12,7 +12,7 @@ public class DrawExecRes {
     private Long strategyId;
 
     private String awardName;
-    private Integer drawState = Constants.DrawStateEnum.FAILURE.getCode();
+    private Integer drawState = Constants.DrawStateEnum.FAILURE.key();
 
     private AwardInfo awardInfo;
 }

@@ -16,7 +16,7 @@ public interface LotteryAlgorithm {
      * @param strategyId        策略ID
      * @param awardRateInfoList 奖品概率集合
      */
-    void initRateTuple(Long strategyId, List<AwardRateInfo> awardRateInfoList);
+    void initRateInfoData(Long strategyId, List<AwardRateInfo> awardRateInfoList);
 
     /**
      * 抽奖核心接口
@@ -33,5 +33,5 @@ public interface LotteryAlgorithm {
      * @param strategyId 策略ID
      * @return 是否
      */
-    boolean isExistRateTuple(Long strategyId);
+    boolean isExistRateInfoData(Long strategyId);
 }

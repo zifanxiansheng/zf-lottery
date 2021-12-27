@@ -68,28 +68,27 @@
             </if>
         </trim>
     </insert>
-    <select id="selectByKeySelective" parameterType="top.zifanxiansheng.zf_lottery.infrastructure.po.RuleTreeNode">
+    <select id="selectByKeySelective" parameterType="top.zifanxiansheng.zf_lottery.infrastructure.po.RuleTreeNode"
+            resultMap="BaseResultMap">
         select
         <include refid="Base_Column_List"/>
         from rule_tree_node
         <where>
-            <set>
-                <if test="treeId != null">
-                    tree_id = #{treeId,jdbcType=INTEGER},
-                </if>
-                <if test="nodeType != null">
-                    node_type = #{nodeType,jdbcType=INTEGER},
-                </if>
-                <if test="nodeValue != null">
-                    node_value = #{nodeValue,jdbcType=VARCHAR},
-                </if>
-                <if test="ruleKey != null">
-                    rule_key = #{ruleKey,jdbcType=VARCHAR},
-                </if>
-                <if test="ruleDesc != null">
-                    rule_desc = #{ruleDesc,jdbcType=VARCHAR},
-                </if>
-            </set>
+            <if test="treeId != null">
+                and tree_id = #{treeId,jdbcType=INTEGER}
+            </if>
+            <if test="nodeType != null">
+                and node_type = #{nodeType,jdbcType=INTEGER}
+            </if>
+            <if test="nodeValue != null">
+                and node_value = #{nodeValue,jdbcType=VARCHAR}
+            </if>
+            <if test="ruleKey != null">
+                and rule_key = #{ruleKey,jdbcType=VARCHAR}
+            </if>
+            <if test="ruleDesc != null">
+                and rule_desc = #{ruleDesc,jdbcType=VARCHAR}
+            </if>
         </where>
     </select>
     <update id="updateByPrimaryKeySelective"

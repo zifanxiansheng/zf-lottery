@@ -27,7 +27,7 @@ public class SingleRateRandomCalcAlgorithm extends BaseLotteryAlgorithm {
     private final Map<Long, String[]> rateTupleMap = new ConcurrentHashMap<>();
 
     @Override
-    public void initRateTuple(Long strategyId, List<AwardRateInfo> awardRateInfoList) {
+    public void initRateInfoData(Long strategyId, List<AwardRateInfo> awardRateInfoList) {
         // init RATE_TUPLE_MAP
         String[] rateTuple = rateTupleMap.computeIfAbsent(strategyId, k -> new String[RATE_TUPLE_LENGTH]);
         int cursorVal = 0;
@@ -55,7 +55,7 @@ public class SingleRateRandomCalcAlgorithm extends BaseLotteryAlgorithm {
     }
 
     @Override
-    public boolean isExistRateTuple(Long strategyId) {
+    public boolean isExistRateInfoData(Long strategyId) {
         return rateTupleMap.isEmpty();
     }
 

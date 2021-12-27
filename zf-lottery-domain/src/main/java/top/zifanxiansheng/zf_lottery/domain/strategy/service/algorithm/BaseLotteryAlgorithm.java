@@ -1,6 +1,6 @@
 package top.zifanxiansheng.zf_lottery.domain.strategy.service.algorithm;
 
-import sun.reflect.generics.reflectiveObjects.NotImplementedException;
+import top.zifanxiansheng.zf_lottery.domain.strategy.exception.NotImplementException;
 import top.zifanxiansheng.zf_lottery.domain.strategy.model.bo.AwardRateInfo;
 
 import java.util.List;
@@ -17,17 +17,17 @@ public abstract class BaseLotteryAlgorithm implements LotteryAlgorithm {
     private final Map<Long, List<AwardRateInfo>> awardRateListMap = new ConcurrentHashMap<>();
 
     @Override
-    public void initRateTuple(Long strategyId, List<AwardRateInfo> awardRateInfoList) {
+    public void initRateInfoData(Long strategyId, List<AwardRateInfo> awardRateInfoList) {
         awardRateListMap.put(strategyId, awardRateInfoList);
     }
 
     @Override
     public String calc(Long strategyId, List<String> excludeAwardIds) {
-        throw new NotImplementedException();
+        throw new NotImplementException();
     }
 
     @Override
-    public boolean isExistRateTuple(Long strategyId) {
+    public boolean isExistRateInfoData(Long strategyId) {
         return awardRateListMap.containsKey(strategyId);
     }
 

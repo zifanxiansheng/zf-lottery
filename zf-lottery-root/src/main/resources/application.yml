@@ -15,5 +15,8 @@ spring:
     username: qlt1_dev
     password: qlt1_dev
 
-
+logging:
+  level:
+    root: INFO
+    top.zifanxiansheng.zf_lottery.infrastructure: INFO
 

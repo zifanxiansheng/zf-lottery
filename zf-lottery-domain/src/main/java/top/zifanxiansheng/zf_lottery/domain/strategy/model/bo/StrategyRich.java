@@ -5,23 +5,22 @@ import lombok.Builder;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
-import java.math.BigDecimal;
+import java.util.List;
 
-/**
- * @Author 梓樊先生
- * @Date 2021/12/24 15:53
- **/
 @Data
 @Builder
 @AllArgsConstructor
 @NoArgsConstructor
-public class AwardRateInfo {
+public class StrategyRich {
 
     private Long strategyId;
 
-    private BigDecimal awardRate;
-
-    private String awardId;
-
-
+    /**
+     * 策略信息
+     */
+    private StrategyBrief strategyBrief;
+    /**
+     * 策略明细信息
+     */
+    private List<StrategyDetailBrief> strategyDetailBriefList;
 }

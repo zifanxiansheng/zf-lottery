@@ -125,37 +125,36 @@
     </update>
 
 
-    <select id="selectByKeySelective" parameterType="top.zifanxiansheng.zf_lottery.infrastructure.po.StrategyDetail">
+    <select id="selectByKeySelective" parameterType="top.zifanxiansheng.zf_lottery.infrastructure.po.StrategyDetail"
+            resultMap="BaseResultMap">
         select
         <include refid="Base_Column_List"/>
         from strategy_detail
         <where>
-            <set>
-                <if test="strategyId != null">
-                    strategy_id = #{strategyId,jdbcType=BIGINT},
-                </if>
-                <if test="awardId != null">
-                    award_id = #{awardId,jdbcType=VARCHAR},
-                </if>
-                <if test="awardName != null">
-                    award_name = #{awardName,jdbcType=VARCHAR},
-                </if>
-                <if test="awardCount != null">
-                    award_count = #{awardCount,jdbcType=INTEGER},
-                </if>
-                <if test="awardSurplusCount != null">
-                    award_surplus_count = #{awardSurplusCount,jdbcType=INTEGER},
-                </if>
-                <if test="awardRate != null">
-                    award_rate = #{awardRate,jdbcType=DECIMAL},
-                </if>
-                <if test="createTime != null">
-                    create_time = #{createTime,jdbcType=TIMESTAMP},
-                </if>
-                <if test="updateTime != null">
-                    update_time = #{updateTime,jdbcType=TIMESTAMP},
-                </if>
-            </set>
+            <if test="strategyId != null">
+                strategy_id = #{strategyId,jdbcType=BIGINT}
+            </if>
+            <if test="awardId != null">
+                and award_id = #{awardId,jdbcType=VARCHAR}
+            </if>
+            <if test="awardName != null">
+                and award_name = #{awardName,jdbcType=VARCHAR}
+            </if>
+            <if test="awardCount != null">
+                and award_count = #{awardCount,jdbcType=INTEGER}
+            </if>
+            <if test="awardSurplusCount != null">
+                and award_surplus_count = #{awardSurplusCount,jdbcType=INTEGER}
+            </if>
+            <if test="awardRate != null">
+                and award_rate = #{awardRate,jdbcType=DECIMAL}
+            </if>
+            <if test="createTime != null">
+                and create_time = #{createTime,jdbcType=TIMESTAMP}
+            </if>
+            <if test="updateTime != null">
+                and update_time = #{updateTime,jdbcType=TIMESTAMP}
+            </if>
         </where>
     </select>
     <update id="updateByPrimaryKey" parameterType="top.zifanxiansheng.zf_lottery.infrastructure.po.StrategyDetail">
