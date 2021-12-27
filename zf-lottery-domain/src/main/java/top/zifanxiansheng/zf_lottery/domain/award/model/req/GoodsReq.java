@@ -16,6 +16,7 @@ public class GoodsReq {
     private String awardName;
     private String awardContent;
     private Long strategyId;
+    private Long orderId;
 
 
 }

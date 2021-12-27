@@ -18,21 +18,23 @@ public class SpringBeanUtils implements ApplicationContextAware {
     private ApplicationContext applicationContext;
 
     @Override
-    public void setApplicationContext(ApplicationContext applicationContext) throws BeansException {
+    public void setApplicationContext(final ApplicationContext applicationContext) throws BeansException {
         this.applicationContext = applicationContext;
     }
 
-    public <T> void registerAnnotationMap(Class<? extends Annotation> annotationClass, Class<T> t, Map<? extends Constants.IPair, T> constMap) {
-        Map<String, Object> beansMap = applicationContext.getBeansWithAnnotation(annotationClass);
+    public <T> void registerAnnotationMap(final Class<? extends Annotation> annotationClass, final Class<T> t, final Map<? extends Constants.IPair, T> constMap) {
+        final Map<String, Object> beansMap = this.applicationContext.getBeansWithAnnotation(annotationClass);
         beansMap.entrySet().forEach(beanEntry -> {
-            Annotation annotation = AnnotationUtils.findAnnotation(beanEntry.getValue().getClass(), annotationClass);
-            if (t.isAssignableFrom(beanEntry.getValue().getClass())) try {
-                Method getMethod = annotation.getClass().getDeclaredMethod("value");
-                Constants.IPair keyEnum = (Constants.IPair) getMethod.invoke(annotation);
-                constMap.put(keyEnum.get(), (T) beanEntry.getValue());
-                log.info("自动注册策略类  key:{}, value: {}", annotation, beanEntry.getKey());
-            } catch (Exception e) {
-                e.printStackTrace();
+            final Annotation annotation = AnnotationUtils.findAnnotation(beanEntry.getValue().getClass(), annotationClass);
+            if (t.isAssignableFrom(beanEntry.getValue().getClass())) {
+                try {
+                    final Method getMethod = annotation.getClass().getDeclaredMethod("value");
+                    final Constants.IPair keyEnum = (Constants.IPair) getMethod.invoke(annotation);
+                    constMap.put(keyEnum.get(), (T) beanEntry.getValue());
+                    log.info("自动注册策略类  key:{}, value: {}", annotation, beanEntry.getKey());
+                } catch (final Exception e) {
+                    log.error("自动注册策略类失败：{}", e);
+                }
             }
 
 
