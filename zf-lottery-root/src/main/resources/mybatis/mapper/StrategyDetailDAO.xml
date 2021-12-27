@@ -169,4 +169,12 @@
             update_time         = #{updateTime,jdbcType=TIMESTAMP}
         where id = #{id,jdbcType=BIGINT}
     </update>
+
+    <update id="deductStock" parameterType="top.zifanxiansheng.zf_lottery.infrastructure.po.StrategyDetail">
+        update strategy_detail
+        set award_surplus_count = award_surplus_count - 1
+        where award_id = #{awardId}
+          and award_surplus_count > 0
+          and strategy_id = #{strategyId}
+    </update>
 </mapper>

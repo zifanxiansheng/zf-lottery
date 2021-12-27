@@ -9,4 +9,6 @@ import top.zifanxiansheng.zf_lottery.infrastructure.po.StrategyDetail;
  */
 @Mapper
 public interface StrategyDetailDAO extends MyBatisBaseDao<StrategyDetail, Long> {
+
+    int deductStock(StrategyDetail req);
 }

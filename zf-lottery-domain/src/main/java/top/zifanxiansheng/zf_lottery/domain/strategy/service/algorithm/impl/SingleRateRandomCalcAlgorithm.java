@@ -18,7 +18,7 @@ import java.util.concurrent.ConcurrentHashMap;
  * @Date 2021/12/24 17:46
  **/
 @Component
-@StrategyModel(strategyModel = Constants.StrategyModelEnum.SINGLE)
+@StrategyModel(value = Constants.StrategyModelEnum.SINGLE)
 @Slf4j
 public class SingleRateRandomCalcAlgorithm extends BaseLotteryAlgorithm {
     private final int HASH_INCREMENT = 0x61c88647; // 黄金分割线
@@ -56,7 +56,7 @@ public class SingleRateRandomCalcAlgorithm extends BaseLotteryAlgorithm {
 
     @Override
     public boolean isExistRateInfoData(Long strategyId) {
-        return rateTupleMap.isEmpty();
+        return !rateTupleMap.isEmpty();
     }
 
     private int hashIdx(int val) {

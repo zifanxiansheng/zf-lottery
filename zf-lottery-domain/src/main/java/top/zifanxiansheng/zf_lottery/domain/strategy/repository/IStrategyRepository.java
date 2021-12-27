@@ -1,6 +1,8 @@
 package top.zifanxiansheng.zf_lottery.domain.strategy.repository;
 
+import top.zifanxiansheng.zf_lottery.domain.strategy.model.bo.AwardInfo;
 import top.zifanxiansheng.zf_lottery.domain.strategy.model.bo.AwardRateInfo;
+import top.zifanxiansheng.zf_lottery.domain.strategy.model.bo.StrategyBrief;
 import top.zifanxiansheng.zf_lottery.domain.strategy.model.bo.StrategyRich;
 
 import java.util.List;
@@ -26,6 +28,11 @@ public interface IStrategyRepository {
      * @return StrategyRich
      */
     StrategyRich queryStrategyRich(Long strategyId);
+
+    AwardInfo queryAwardInfo(String awardId);
+
+
+    StrategyBrief queryStrategy(Long strategyId);
 
 
 }

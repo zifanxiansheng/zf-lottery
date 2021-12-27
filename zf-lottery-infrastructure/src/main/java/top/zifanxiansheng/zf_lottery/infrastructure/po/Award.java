@@ -1,5 +1,6 @@
 package top.zifanxiansheng.zf_lottery.infrastructure.po;
 
+import lombok.Builder;
 import lombok.Data;
 
 import java.io.Serializable;
@@ -9,6 +10,7 @@ import java.time.LocalDateTime;
  * @author 奖品配置
  */
 @Data
+@Builder
 public class Award implements Serializable {
     private static final long serialVersionUID = 1L;
     /**
@@ -22,7 +24,7 @@ public class Award implements Serializable {
     /**
      * 奖品类型（1:文字描述、2:兑换码、3:优惠券、4:实物奖品）
      */
-    private int awardType;
+    private Integer awardType;
     /**
      * 奖品名称
      */

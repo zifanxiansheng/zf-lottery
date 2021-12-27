@@ -16,7 +16,7 @@ import java.util.stream.Collectors;
  * @Date 2021/12/24 17:01
  **/
 @Component
-@StrategyModel(strategyModel = Constants.StrategyModelEnum.OVERALL)
+@StrategyModel(value = Constants.StrategyModelEnum.OVERALL)
 public class OverAllRateRandomCalcAlgorithm extends BaseLotteryAlgorithm {
 
 

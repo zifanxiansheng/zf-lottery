@@ -1,16 +1,14 @@
 package top.zifanxiansheng.zf_lottery.domain.strategy.service.handler;
 
 import lombok.extern.slf4j.Slf4j;
-import org.springframework.beans.BeansException;
-import org.springframework.context.ApplicationContext;
-import org.springframework.context.ApplicationContextAware;
-import org.springframework.core.annotation.AnnotationUtils;
 import org.springframework.stereotype.Component;
 import top.zifanxiansheng.zf_lottery.common.Constants;
 import top.zifanxiansheng.zf_lottery.domain.strategy.annotation.StrategyModel;
 import top.zifanxiansheng.zf_lottery.domain.strategy.service.algorithm.LotteryAlgorithm;
+import top.zifanxiansheng.zf_lottery.domain.utils.SpringBeanUtils;
 
 import javax.annotation.PostConstruct;
+import javax.annotation.Resource;
 import java.util.Map;
 import java.util.concurrent.ConcurrentHashMap;
 
@@ -19,26 +17,15 @@ import java.util.concurrent.ConcurrentHashMap;
  */
 @Slf4j
 @Component
-public class DrawHandlerConfig implements ApplicationContextAware {
+public class DrawHandlerConfig {
 
-    protected static final Map<Constants.StrategyModelEnum, LotteryAlgorithm> LOTTERY_ALGORITHM_MAP = new ConcurrentHashMap<>();
-    private ApplicationContext applicationContext;
+    public static final Map<Constants.StrategyModelEnum, LotteryAlgorithm> LOTTERY_ALGORITHM_MAP = new ConcurrentHashMap<>();
+    @Resource
+    SpringBeanUtils springBeanUtils;
 
     @PostConstruct
     public void init() {
+        springBeanUtils.registerAnnotationMap(StrategyModel.class, LotteryAlgorithm.class, LOTTERY_ALGORITHM_MAP);
 
-        Map<String, Object> beansMap = applicationContext.getBeansWithAnnotation(StrategyModel.class);
-        beansMap.entrySet().forEach(beanEntry -> {
-            StrategyModel strategyModel = AnnotationUtils.findAnnotation(beanEntry.getValue().getClass(), StrategyModel.class);
-            if (beanEntry.getValue() instanceof LotteryAlgorithm)
-                LOTTERY_ALGORITHM_MAP.put(strategyModel.strategyModel(), (LotteryAlgorithm) beanEntry.getValue());
-            log.info("strategyModel:{}, LotteryAlgorithm: {}", strategyModel, beanEntry.getKey());
-        });
-
-    }
-
-    @Override
-    public void setApplicationContext(ApplicationContext applicationContext) throws BeansException {
-        this.applicationContext = applicationContext;
     }
 }

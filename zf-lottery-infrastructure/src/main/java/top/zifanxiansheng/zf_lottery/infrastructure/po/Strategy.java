@@ -56,7 +56,7 @@ public class Strategy implements Serializable {
     /**
      * 策略模式  1. 单项  2.总体
      */
-    private int strategyModel;
+    private Integer strategyModel;
 
 
 }

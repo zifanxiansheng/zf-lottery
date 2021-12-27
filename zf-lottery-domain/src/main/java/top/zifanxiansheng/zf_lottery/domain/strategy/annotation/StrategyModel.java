@@ -11,5 +11,5 @@ import java.lang.annotation.Target;
 @Retention(RetentionPolicy.RUNTIME)
 public @interface StrategyModel {
 
-    Constants.StrategyModelEnum strategyModel() default Constants.StrategyModelEnum.SINGLE;
+    Constants.StrategyModelEnum value() default Constants.StrategyModelEnum.SINGLE;
 }
