@@ -79,5 +79,12 @@ public class StrategyRepository implements IStrategyRepository {
         return strategyMapper.sourceToTarget(strategies.get(0));
     }
 
+    @Override
+    public int saveStrategy(StrategyBrief strategyBrief) {
+        Strategy strategy = strategyMapper.targetToSource(strategyBrief);
+        int count = strategyDAO.insert(strategy);
+        return count;
+    }
+
 
 }

@@ -7,6 +7,7 @@ import lombok.NoArgsConstructor;
 import top.zifanxiansheng.zf_lottery.common.Constants;
 
 import java.time.LocalDateTime;
+import java.util.List;
 
 @Data
 @Builder
@@ -43,5 +44,7 @@ public class StrategyBrief {
      * 发放奖品时间
      */
     private LocalDateTime grantDate;
+
+    private List<StrategyDetailBrief> strategyDetailBriefList;
 
 }

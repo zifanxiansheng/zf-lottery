@@ -1,7 +1,9 @@
 package top.zifanxiansheng.zf_lottery.domain.strategy.repository.impl;
 
 import org.springframework.stereotype.Repository;
+import top.zifanxiansheng.zf_lottery.domain.strategy.model.bo.StrategyDetailBrief;
 import top.zifanxiansheng.zf_lottery.domain.strategy.repository.IStrategyDetailRepository;
+import top.zifanxiansheng.zf_lottery.domain.strategy.service.assembler.StrategyDetailMapping;
 import top.zifanxiansheng.zf_lottery.infrastructure.dao.StrategyDetailDAO;
 import top.zifanxiansheng.zf_lottery.infrastructure.po.StrategyDetail;
 
@@ -20,6 +22,8 @@ public class StrategyDetailRepository implements IStrategyDetailRepository {
 
     @Resource
     private StrategyDetailDAO strategyDetailDAO;
+    @Resource
+    private StrategyDetailMapping strategyDetailMapping;
 
 
     @Override
@@ -32,5 +36,15 @@ public class StrategyDetailRepository implements IStrategyDetailRepository {
         List<StrategyDetail> strategyDetails = strategyDetailDAO.selectByKeySelective(StrategyDetail.builder().strategyId(strategyId).awardSurplusCount(0).build());
         if (strategyDetails.isEmpty()) return new ArrayList<>();
         return strategyDetails.stream().map(StrategyDetail::getAwardId).collect(Collectors.toList());
+    }
+
+    @Override
+    public void saveStrategyDetails(List<StrategyDetailBrief> strategyDetailBriefList) {
+
+        for (StrategyDetailBrief strategyDetailBrief : strategyDetailBriefList) {
+            StrategyDetail strategyDetail = strategyDetailMapping.targetToSource(strategyDetailBrief);
+            strategyDetailDAO.insert(strategyDetail);
+        }
+
     }
 }
