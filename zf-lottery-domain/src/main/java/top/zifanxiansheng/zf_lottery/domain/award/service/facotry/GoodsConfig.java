@@ -2,7 +2,7 @@ package top.zifanxiansheng.zf_lottery.domain.award.service.facotry;
 
 import top.zifanxiansheng.zf_lottery.common.Constants;
 import top.zifanxiansheng.zf_lottery.domain.award.annotation.GoodType;
-import top.zifanxiansheng.zf_lottery.domain.award.service.distribute.IDistributionGoods;
+import top.zifanxiansheng.zf_lottery.domain.award.service.distribution.IDistributionGoods;
 import top.zifanxiansheng.zf_lottery.domain.utils.SpringBeanUtils;
 
 import javax.annotation.PostConstruct;

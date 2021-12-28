@@ -1,4 +1,4 @@
-package top.zifanxiansheng.zf_lottery.domain.award.service.distribute;
+package top.zifanxiansheng.zf_lottery.domain.award.service.distribution;
 
 import lombok.extern.slf4j.Slf4j;
 import top.zifanxiansheng.zf_lottery.domain.award.repository.IOrderRepository;

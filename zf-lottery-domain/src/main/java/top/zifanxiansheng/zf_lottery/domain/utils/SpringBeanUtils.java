@@ -24,16 +24,17 @@ public class SpringBeanUtils implements ApplicationContextAware {
 
     public <T> void registerAnnotationMap(final Class<? extends Annotation> annotationClass, final Class<T> t, final Map<? extends Constants.IPair, T> constMap) {
         final Map<String, Object> beansMap = this.applicationContext.getBeansWithAnnotation(annotationClass);
-        beansMap.entrySet().forEach(beanEntry -> {
-            final Annotation annotation = AnnotationUtils.findAnnotation(beanEntry.getValue().getClass(), annotationClass);
-            if (t.isAssignableFrom(beanEntry.getValue().getClass())) {
+        beansMap.forEach((key, value) -> {
+            final Annotation annotation = AnnotationUtils.findAnnotation(value.getClass(), annotationClass);
+            if (t.isAssignableFrom(value.getClass())) {
                 try {
+                    assert annotation != null;
                     final Method getMethod = annotation.getClass().getDeclaredMethod("value");
                     final Constants.IPair keyEnum = (Constants.IPair) getMethod.invoke(annotation);
-                    constMap.put(keyEnum.get(), (T) beanEntry.getValue());
-                    log.info("自动注册策略类  key:{}, value: {}", annotation, beanEntry.getKey());
+                    constMap.put(keyEnum.get(), (T) value);
+                    log.info("自动注册策略类  key:{}, value: {}", annotation, key);
                 } catch (final Exception e) {
-                    log.error("自动注册策略类失败：{}", e);
+                    log.error("自动注册策略类失败：", e);
                 }
             }
 
