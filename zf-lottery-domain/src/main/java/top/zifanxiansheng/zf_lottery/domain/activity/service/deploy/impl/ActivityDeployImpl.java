@@ -29,10 +29,10 @@ public class ActivityDeployImpl implements IActivityDeploy {
     @Resource
     private IStrategyDetailRepository strategyDetailRepository;
 
-    @Transactional
+    @Transactional(rollbackFor = Exception.class)
     @Override
     public void createActivity(ActivityConfigRich req) {
-        log.info("创建活动开始 activityId: {} strategyId: {}", req.getActivityId(), req.getStrategyId());
+        log.info("创建活动开始 activityId: {} ", req.getActivityId());
         ActivityInfo activityInfo = req.getActivityInfo();
         activityRepository.createActivity(activityInfo);
 
@@ -44,7 +44,7 @@ public class ActivityDeployImpl implements IActivityDeploy {
 
         List<StrategyDetailBrief> strategyDetailBriefList = strategyBrief.getStrategyDetailBriefList();
         strategyDetailRepository.saveStrategyDetails(strategyDetailBriefList);
-        log.info("创建活动结束 activityId: {} strategyId: {}", req.getActivityId(), req.getStrategyId());
+        log.info("创建活动结束 activityId: {} strategyId: {}", req.getActivityId(), strategyBrief.getStrategyId());
 
     }
 }

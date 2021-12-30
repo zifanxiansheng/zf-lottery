@@ -1,99 +1,84 @@
 package top.zifanxiansheng.zf_lottery.infrastructure.po;
 
-import java.io.Serializable;
-import java.time.LocalDateTime;
+import lombok.Builder;
 import lombok.Data;
 
+import java.io.Serializable;
+import java.time.LocalDateTime;
+
 /**
- * @author 
- * 用户策略计算结果表
+ * @author 用户策略计算结果表
  */
 @Data
+@Builder
 public class UserStrategyExport implements Serializable {
+    private static final long serialVersionUID = 1L;
     /**
      * 自增ID
      */
     private Long id;
-
     /**
      * 用户ID
      */
     private String uId;
-
     /**
      * 活动ID
      */
     private Long activityId;
-
     /**
      * 订单ID
      */
     private Long orderId;
-
     /**
      * 策略ID
      */
     private Long strategyId;
-
     /**
      * 策略方式（1:单项概率、2:总体概率）
      */
-    private Byte strategyMode;
-
+    private Integer strategyMode;
     /**
      * 发放奖品方式（1:即时、2:定时[含活动结束]、3:人工）
      */
-    private Byte grantType;
-
+    private Integer grantType;
     /**
      * 发奖时间
      */
     private LocalDateTime grantDate;
-
     /**
      * 发奖状态
      */
-    private Byte grantState;
-
+    private Integer grantState;
     /**
      * 发奖ID
      */
     private String awardId;
-
     /**
      * 奖品类型（1:文字描述、2:兑换码、3:优惠券、4:实物奖品）
      */
-    private Byte awardType;
-
+    private Integer awardType;
     /**
      * 奖品名称
      */
     private String awardName;
-
     /**
      * 奖品内容「文字描述、Key、码」
      */
     private String awardContent;
-
     /**
      * 防重ID
      */
     private String uuid;
-
     /**
      * 消息发送状态（0未发送、1发送成功、2发送失败）
      */
-    private Byte mqState;
-
+    private Integer mqState;
     /**
      * 创建时间
      */
     private LocalDateTime createTime;
-
     /**
      * 更新时间
      */
     private LocalDateTime updateTime;
-
-    private static final long serialVersionUID = 1L;
 }

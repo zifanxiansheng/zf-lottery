@@ -21,29 +21,30 @@
         <result column="update_time" jdbcType="TIMESTAMP" property="updateTime"/>
     </resultMap>
     <sql id="Base_Column_List">
-        id, u_id, activity_id, order_id, strategy_id, strategy_mode, grant_type, grant_date,
+        id
+        , u_id, activity_id, order_id, strategy_id, strategy_mode, grant_type, grant_date,
         grant_state, award_id, award_type, award_name, award_content, uuid, mq_state, create_time,
         update_time
     </sql>
     <select id="selectByPrimaryKey" parameterType="java.lang.Long" resultMap="BaseResultMap">
         select
         <include refid="Base_Column_List"/>
-        from user_strategy_export_000
+        from user_strategy_export
         where id = #{id,jdbcType=BIGINT}
     </select>
     <delete id="deleteByPrimaryKey" parameterType="java.lang.Long">
         delete
-        from user_strategy_export_000
+        from user_strategy_export
         where id = #{id,jdbcType=BIGINT}
     </delete>
     <insert id="insert" keyColumn="id" keyProperty="id"
             parameterType="top.zifanxiansheng.zf_lottery.infrastructure.po.UserStrategyExport" useGeneratedKeys="true">
-        insert into user_strategy_export_000 (u_id, activity_id, order_id,
-                                              strategy_id, strategy_mode, grant_type,
-                                              grant_date, grant_state, award_id,
-                                              award_type, award_name, award_content,
-                                              uuid, mq_state, create_time,
-                                              update_time)
+        insert into user_strategy_export (u_id, activity_id, order_id,
+                                          strategy_id, strategy_mode, grant_type,
+                                          grant_date, grant_state, award_id,
+                                          award_type, award_name, award_content,
+                                          uuid, mq_state, create_time,
+                                          update_time)
         values (#{uId,jdbcType=VARCHAR}, #{activityId,jdbcType=BIGINT}, #{orderId,jdbcType=BIGINT},
                 #{strategyId,jdbcType=BIGINT}, #{strategyMode,jdbcType=TINYINT}, #{grantType,jdbcType=TINYINT},
                 #{grantDate,jdbcType=TIMESTAMP}, #{grantState,jdbcType=TINYINT}, #{awardId,jdbcType=VARCHAR},
@@ -53,7 +54,7 @@
     </insert>
     <insert id="insertSelective" keyColumn="id" keyProperty="id"
             parameterType="top.zifanxiansheng.zf_lottery.infrastructure.po.UserStrategyExport" useGeneratedKeys="true">
-        insert into user_strategy_export_000
+        insert into user_strategy_export
         <trim prefix="(" suffix=")" suffixOverrides=",">
             <if test="uId != null">
                 u_id,
@@ -160,7 +161,7 @@
             resultMap="BaseResultMap">
         select
         <include refid="Base_Column_List"/>
-        from user_strategy_export_000
+        from user_strategy_export
         <where>
             <if test="uId != null">
                 u_id = #{uId,jdbcType=VARCHAR}
@@ -214,7 +215,7 @@
     </select>
     <update id="updateByPrimaryKeySelective"
             parameterType="top.zifanxiansheng.zf_lottery.infrastructure.po.UserStrategyExport">
-        update user_strategy_export_000
+        update user_strategy_export
         <set>
             <if test="uId != null">
                 u_id = #{uId,jdbcType=VARCHAR},
@@ -268,7 +269,7 @@
         where id = #{id,jdbcType=BIGINT}
     </update>
     <update id="updateByPrimaryKey" parameterType="top.zifanxiansheng.zf_lottery.infrastructure.po.UserStrategyExport">
-        update user_strategy_export_000
+        update user_strategy_export
         set u_id          = #{uId,jdbcType=VARCHAR},
             activity_id   = #{activityId,jdbcType=BIGINT},
             order_id      = #{orderId,jdbcType=BIGINT},

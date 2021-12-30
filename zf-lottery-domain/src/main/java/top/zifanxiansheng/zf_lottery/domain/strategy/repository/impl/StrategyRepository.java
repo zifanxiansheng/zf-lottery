@@ -80,10 +80,9 @@ public class StrategyRepository implements IStrategyRepository {
     }
 
     @Override
-    public int saveStrategy(StrategyBrief strategyBrief) {
+    public void saveStrategy(StrategyBrief strategyBrief) {
         Strategy strategy = strategyMapper.targetToSource(strategyBrief);
-        int count = strategyDAO.insert(strategy);
-        return count;
+        strategyDAO.insert(strategy);
     }
 
 

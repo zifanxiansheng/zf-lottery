@@ -34,7 +34,7 @@ public interface IStrategyRepository {
 
     StrategyBrief queryStrategy(Long strategyId);
 
-    int saveStrategy(StrategyBrief strategyBrief);
+    void saveStrategy(StrategyBrief strategyBrief);
 
 
 }

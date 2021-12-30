@@ -16,7 +16,7 @@ import java.util.List;
 public class ActivityConfigRich {
     private Long activityId;
 
-    private Long strategyId;
+//    private Long strategyId;
 
     private ActivityInfo activityInfo;
 

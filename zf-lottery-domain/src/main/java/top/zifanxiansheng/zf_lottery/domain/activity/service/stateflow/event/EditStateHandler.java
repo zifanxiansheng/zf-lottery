@@ -1,0 +1,55 @@
+package top.zifanxiansheng.zf_lottery.domain.activity.service.stateflow.event;
+
+import org.springframework.stereotype.Service;
+import top.zifanxiansheng.zf_lottery.common.Constants;
+import top.zifanxiansheng.zf_lottery.common.Result;
+import top.zifanxiansheng.zf_lottery.domain.activity.annotation.ActivityState;
+import top.zifanxiansheng.zf_lottery.domain.activity.service.stateflow.AbstractStateHandler;
+
+/**
+ * @Author 梓樊先生
+ * @Date 2021/12/29 11:24
+ **/
+@ActivityState(value = Constants.ActivityStateEnum.EDIT)
+@Service
+public class EditStateHandler extends AbstractStateHandler {
+    @Override
+    public Result edit(Long activityId, Constants.ActivityStateEnum state) {
+        return Result.buildFailure("不能重复编辑");
+    }
+
+    @Override
+    public Result arraignment(Long activityId, Constants.ActivityStateEnum state) {
+        boolean success = activityRepository.alterActivityStatus(activityId, state, Constants.ActivityStateEnum.ARRAIGNMENT);
+        return success ? Result.buildSuccess("操作成功") : Result.buildFailure("操作失败");
+    }
+
+    @Override
+    public Result rollBack(Long activityId, Constants.ActivityStateEnum state) {
+        return Result.buildFailure("关闭状态不撤审");
+    }
+
+    @Override
+    public Result pass(Long activityId, Constants.ActivityStateEnum state) {
+        return Result.buildFailure("编辑状态不能通过");
+    }
+
+    @Override
+    public Result reject(Long activityId, Constants.ActivityStateEnum state) {
+        return Result.buildFailure("编辑状态不能拒绝");
+
+    }
+
+    @Override
+    public Result close(Long activityId, Constants.ActivityStateEnum state) {
+        boolean success = activityRepository.alterActivityStatus(activityId, state, Constants.ActivityStateEnum.CLOSE);
+        return success ? Result.buildSuccess("操作成功") : Result.buildFailure("操作失败");
+
+    }
+
+    @Override
+    public Result open(Long activityId, Constants.ActivityStateEnum state) {
+        return Result.buildFailure("编辑状态不能 open");
+
+    }
+}

@@ -9,14 +9,39 @@ mybatis:
 
 
 
-spring:
-  datasource:
-    url: jdbc:mysql://rm-bp10423t86c5ac9205o.mysql.rds.aliyuncs.com:3306/lottery
-    username: qlt1_dev
-    password: qlt1_dev
 
 logging:
   level:
     root: INFO
     top.zifanxiansheng.zf_lottery.infrastructure: INFO
 
+
+
+lottery:
+  autoRegisterClasses:
+    - top.zifanxiansheng.zf_lottery.domain.strategy.annotation.StrategyModel
+    - top.zifanxiansheng.zf_lottery.domain.activity.annotation.ActivityState
+    - top.zifanxiansheng.zf_lottery.domain.support.ids.annotation.Ids
+
+
+
+zf-db-router:
+  dbCount: 2
+  tbCount: 2
+  routerKey: uId
+  defaultDB: db00
+  list: db01,db02
+  db00:
+    url: jdbc:mysql://rm-bp10423t86c5ac9205o.mysql.rds.aliyuncs.com:3306/lottery
+    userName: qlt1_dev
+    password: qlt1_dev
+
+  db01:
+    url: jdbc:mysql://rm-bp10423t86c5ac9205o.mysql.rds.aliyuncs.com:3306/lottery_01
+    userName: qlt1_dev
+    password: qlt1_dev
+
+  db002:
+    url: jdbc:mysql://rm-bp10423t86c5ac9205o.mysql.rds.aliyuncs.com:3306/lottery_02
+    userName: qlt1_dev
+    password: qlt1_dev
